@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Books", "Books\Books.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderForm", "OrderForm\OrderForm.csproj", "{A4AB0BA4-4405-4D0C-A3FA-3F9486E8412A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeckOfCards", "DeckOfCards\DeckOfCards.csproj", "{946D8114-F045-4523-A481-AACB75C43028}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A4AB0BA4-4405-4D0C-A3FA-3F9486E8412A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4AB0BA4-4405-4D0C-A3FA-3F9486E8412A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4AB0BA4-4405-4D0C-A3FA-3F9486E8412A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{946D8114-F045-4523-A481-AACB75C43028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{946D8114-F045-4523-A481-AACB75C43028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{946D8114-F045-4523-A481-AACB75C43028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{946D8114-F045-4523-A481-AACB75C43028}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
