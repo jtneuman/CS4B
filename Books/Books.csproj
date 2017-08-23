@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{07B0A8EF-9D9C-4A51-B91C-05E42DD9E3FC}</ProjectGuid>
+    <ProjectGuid>{B1CD57BA-A68D-4EDF-868D-E8635E6D0197}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>MapCoordinates</RootNamespace>
-    <AssemblyName>MapCoordinates</AssemblyName>
+    <RootNamespace>Books</RootNamespace>
+    <AssemblyName>Books</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
