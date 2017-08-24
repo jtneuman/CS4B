@@ -40,10 +40,10 @@
             this.btnProcessNextOrder = new System.Windows.Forms.Button();
             this.btnPeekOnNextOrder = new System.Windows.Forms.Button();
             this.lstOrders = new System.Windows.Forms.ListView();
-            this.btnClose = new System.Windows.Forms.Button();
             this.colOrderNo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colCustomer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnClose = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -140,6 +140,7 @@
             this.btnListOrders.TabIndex = 2;
             this.btnListOrders.Text = "List Orders";
             this.btnListOrders.UseVisualStyleBackColor = true;
+            this.btnListOrders.Click += new System.EventHandler(this.btnListOrders_Click);
             // 
             // btnProcessNextOrder
             // 
@@ -149,6 +150,7 @@
             this.btnProcessNextOrder.TabIndex = 1;
             this.btnProcessNextOrder.Text = "Process Next Order";
             this.btnProcessNextOrder.UseVisualStyleBackColor = true;
+            this.btnProcessNextOrder.Click += new System.EventHandler(this.btnProcessNextOrder_Click);
             // 
             // btnPeekOnNextOrder
             // 
@@ -158,6 +160,7 @@
             this.btnPeekOnNextOrder.TabIndex = 0;
             this.btnPeekOnNextOrder.Text = "Peek On Next Order";
             this.btnPeekOnNextOrder.UseVisualStyleBackColor = true;
+            this.btnPeekOnNextOrder.Click += new System.EventHandler(this.btnPeekOnNextOrder_Click);
             // 
             // lstOrders
             // 
@@ -170,6 +173,22 @@
             this.lstOrders.Size = new System.Drawing.Size(536, 106);
             this.lstOrders.TabIndex = 1;
             this.lstOrders.UseCompatibleStateImageBehavior = false;
+            this.lstOrders.View = System.Windows.Forms.View.Details;
+            // 
+            // colOrderNo
+            // 
+            this.colOrderNo.Text = "Order Number";
+            this.colOrderNo.Width = 250;
+            // 
+            // colTotal
+            // 
+            this.colTotal.Text = "Total";
+            this.colTotal.Width = 85;
+            // 
+            // colCustomer
+            // 
+            this.colCustomer.Text = "Customer Name";
+            this.colCustomer.Width = 200;
             // 
             // btnClose
             // 
@@ -179,18 +198,7 @@
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
-            // 
-            // colOrderNo
-            // 
-            this.colOrderNo.Width = 200;
-            // 
-            // colTotal
-            // 
-            this.colTotal.Width = 100;
-            // 
-            // colCustomer
-            // 
-            this.colCustomer.Width = 150;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // Orders
             // 

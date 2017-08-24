@@ -164,5 +164,69 @@ namespace Orders
                 ShowCustomerOrders(customerId);
             }
         }
+
+        private void btnPeekOnNextOrder_Click(object sender, EventArgs e)
+        {
+            if (orders.Count.Equals(0) || customers.Count.Equals(0)) return;
+
+            var order = orders.Peek();
+            var customer = customers.First(c => c.Id.Equals(order.CustomerId));
+
+            var item = new ListViewItem(new string[] { order.OrderNo.ToString(),
+                order.Total.ToString(), customer.Name, customer.Id.ToString()});
+
+            lstOrders.Items.Clear();
+            lstOrders.Items.Add(item);
+        }
+
+        private void btnProcessNextOrder_Click(object sender, EventArgs e)
+        {
+            if (orders.Count.Equals(0)) return;
+            var order = orders.Dequeue();
+            fulfilledOrders.Add(order);
+            ShowCustomerOrders(order.CustomerId);
+        }
+
+        private void btnListOrders_Click(object sender, EventArgs e)
+        {
+            var orderList =
+                from o in fulfilledOrders
+                join c in customers on o.CustomerId equals c.Id
+                select new
+                {
+                    OrderNo = o.OrderNo,
+                    Name = c.Name,
+                    Total = o.Total,
+                    CustomerId = c.Id
+                };
+            lstOrders.Items.Clear();
+            foreach (var order in orderList)
+            {
+                var item = new ListViewItem(new string[]
+                {
+                    order.OrderNo.ToString(),
+                    order.Total.ToString(),
+                    order.Name,
+                    order.CustomerId.ToString()
+                });
+
+                lstOrders.Items.Add(item);
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            if (orders.Count > 0)
+            {
+                var result = MessageBox.Show(
+                    "Order Q is not empty! Close anyway?", "WARNING",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                // Check which button has been clicked
+                if (result.Equals(DialogResult.No)) return;
+
+            }
+            this.Close();
+        }
     }
 }
