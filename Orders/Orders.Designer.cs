@@ -168,6 +168,7 @@
             this.colOrderNo,
             this.colTotal,
             this.colCustomer});
+            this.lstOrders.FullRowSelect = true;
             this.lstOrders.Location = new System.Drawing.Point(28, 144);
             this.lstOrders.Name = "lstOrders";
             this.lstOrders.Size = new System.Drawing.Size(536, 106);

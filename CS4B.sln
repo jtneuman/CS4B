@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeckOfCards", "DeckOfCards\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders", "Orders\Orders.csproj", "{57917EAC-597C-4FD6-A321-A4ABC4C9EAAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker", "Poker\Poker.csproj", "{AD2E4145-B273-44C5-81CF-ED023A35FA4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{57917EAC-597C-4FD6-A321-A4ABC4C9EAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57917EAC-597C-4FD6-A321-A4ABC4C9EAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57917EAC-597C-4FD6-A321-A4ABC4C9EAAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD2E4145-B273-44C5-81CF-ED023A35FA4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD2E4145-B273-44C5-81CF-ED023A35FA4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD2E4145-B273-44C5-81CF-ED023A35FA4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD2E4145-B273-44C5-81CF-ED023A35FA4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
