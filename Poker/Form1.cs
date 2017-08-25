@@ -327,7 +327,7 @@ namespace Poker
                 var lblDealer = CreateCard(x, y, dealerHand.Cards[i]);
                 var lblPlayer = CreateCard(x, y, playerHand.Cards[i]);
                 this.panDealer.Controls.Add(lblDealer);
-                this.panDealer.Controls.Add(lblPlayer);
+                this.panPlayer.Controls.Add(lblPlayer);
             }
 
             lblDealerHand.Text = dealerHand.HandValue.ToString();
