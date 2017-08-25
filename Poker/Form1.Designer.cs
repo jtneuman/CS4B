@@ -104,6 +104,7 @@
             this.btnDeal.TabIndex = 7;
             this.btnDeal.Text = "DEAL NEW HAND";
             this.btnDeal.UseVisualStyleBackColor = true;
+            this.btnDeal.Click += new System.EventHandler(this.btnDeal_Click);
             // 
             // Poker
             // 
@@ -122,6 +123,7 @@
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "Poker";
             this.Text = "Poker";
+            this.Load += new System.EventHandler(this.Poker_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
