@@ -217,7 +217,129 @@ namespace Poker
 
         }// End of EvaluateHandMethod
 
-        #endregion
+        private Winner CompareCards()
+        {
+            for (int i = 0; i >= 0; i--)
+                if (!playerHand.Cards[i].Value.Equals(dealerHand.Cards[i].Value))
+                    return playerHand.Cards[i].Value > dealerHand.Cards[i].Value ?
+                        Winner.Player : Winner.Dealer;
+            return Winner.Draw;
+            
+        }
+
+        private Winner CompareHands()
+        {
+            if (playerHand.HandValue > dealerHand.HandValue)
+                return Winner.Player;
+            if (playerHand.HandValue < dealerHand.HandValue)
+                return Winner.Dealer;
+            // Compare hands if they have the same HandValue
+            switch (playerHand.HandValue)
+            {
+                case Hands.Nothing:
+                    return CompareCards();
+
+                case Hands.Pair:
+                    if (playerHand.HighCard1 > dealerHand.HighCard1) return Winner.Player;
+                    if (playerHand.HighCard1 < dealerHand.HighCard1) return Winner.Dealer;
+                    for (int i = 2; i >= 0; i--)
+                        if (!playerHand.Kickers[i].Equals(dealerHand.Kickers[i]))
+                            return playerHand.Kickers[i] > dealerHand.Kickers[i] ?
+                                Winner.Player : Winner.Dealer;
+                    return Winner.Draw;
+
+                case Hands.TwoPair:
+                    if (playerHand.HighCard1 > dealerHand.HighCard1) return Winner.Player;
+                    if (playerHand.HighCard1 < dealerHand.HighCard1) return Winner.Dealer;
+                    if (playerHand.HighCard2 > dealerHand.HighCard2) return Winner.Player;
+                    if (playerHand.HighCard2 < dealerHand.HighCard2) return Winner.Dealer;
+                    if (playerHand.Kickers[0] > dealerHand.Kickers[0]) return Winner.Player;
+                    if (playerHand.Kickers[0] < dealerHand.Kickers[0]) return Winner.Dealer;
+                    return Winner.Draw;
+
+                case Hands.ThreeOfAKind:
+                    return playerHand.HighCard1 > dealerHand.HighCard1 ?
+                        Winner.Player : Winner.Dealer;
+
+                case Hands.Straight:
+                    if (playerHand.HighCard1 > dealerHand.HighCard1)
+                        return Winner.Player;
+                    if (playerHand.HighCard1 < dealerHand.HighCard1)
+                        return Winner.Dealer;
+                    return Winner.Draw;
+
+                case Hands.Flush:
+                    if (playerHand.Suit.Equals(dealerHand.Suit))
+                        return playerHand.HighCard1 > dealerHand.HighCard1 ?
+                            Winner.Player : Winner.Dealer;
+                    return CompareCards();
+
+                case Hands.FullHouse:
+                    return playerHand.HighCard1 > dealerHand.HighCard1 ?
+                        Winner.Player : Winner.Dealer;
+
+                case Hands.FourOfAKind:
+                    return playerHand.HighCard1 > dealerHand.HighCard1 ?
+                        Winner.Player : Winner.Dealer;
+
+                case Hands.StraightFlush:
+                    if (playerHand.HighCard1 > dealerHand.HighCard1)
+                        return Winner.Player;
+                    if (playerHand.HighCard1 < dealerHand.HighCard1)
+                        return Winner.Dealer;
+                    return playerHand.Suit > dealerHand.Suit ? Winner.Player : Winner.Dealer;
+
+                //case Hands.RoyalStraightFlush:
+                //    break; // winner.draw?
+                //default:
+                //    break;
+            }
+            return Winner.Draw;
+
+        }// end CompareHands method
+
+        private Label CreateCard(int x, int y, Card card)
+        {
+            Label lbl = new Label();
+            lbl.Text = String.Format("{0}\n{1}",
+                card.ValueSymbol, card.SuitSymbol);
+            lbl.Size = new Size(55, 76);
+            lbl.Location = new Point(x, y);
+            lbl.BorderStyle = BorderStyle.FixedSingle;
+            lbl.Font = new Font("Consolas", 20);
+            lbl.TextAlign = ContentAlignment.MiddleCenter;
+            lbl.BackColor = Color.White;
+            lbl.ForeColor = card.Suit.Equals(Suit.Hearts) ||
+                card.Suit.Equals(Suit.Diamonds) ?
+                Color.Red : Color.Black;
+            return lbl;
+        }
+
+        private void RevealCards(Winner winner)
+        {
+            this.panDealer.Controls.Clear();
+            this.panPlayer.Controls.Clear();
+
+            for (int i = 0; i < 5; i++)
+            {
+                var x = i * 60;
+                var y = 0;
+                var lblDealer = CreateCard(x, y, dealerHand.Cards[i]);
+                var lblPlayer = CreateCard(x, y, playerHand.Cards[i]);
+                this.panDealer.Controls.Add(lblDealer);
+                this.panDealer.Controls.Add(lblPlayer);
+            }
+
+            lblDealerHand.Text = dealerHand.HandValue.ToString();
+            lblPlayerHand.Text = playerHand.HandValue.ToString();
+            lblWinner.Text = String.Format("\t{0}",
+                winner.Equals(Winner.Player) ? "Player wins!" :
+                winner.Equals(Winner.Dealer) ? "Dealer wins!" :
+                "It's a draw");
+            lblWinner.BackColor = winner.Equals(Winner.Player) ?
+                Color.LightGreen : Color.LightPink;
+        }
+        #endregion // methods
 
 
 
@@ -229,17 +351,19 @@ namespace Poker
 
             /*Comment out the code for the Cards array after
              testing the EvaluateHand method.*/
-            playerHand.Cards = new Card[5]
-            {
-                 new Card(Value.Ace, Suit.Diamonds),
-                 new Card(Value.Ace, Suit.Clubs),
-                 new Card(Value.Eight, Suit.Diamonds),
-                 new Card(Value.Ace, Suit.Hearts),
-                 new Card(Value.Five, Suit.Spades)
-            };
+            //playerHand.Cards = new Card[5]
+            //{
+            //     new Card(Value.Ace, Suit.Diamonds),
+            //     new Card(Value.Ace, Suit.Clubs),
+            //     new Card(Value.Eight, Suit.Diamonds),
+            //     new Card(Value.Ace, Suit.Hearts),
+            //     new Card(Value.Five, Suit.Spades)
+            //};
 
             EvaluateHand(ref playerHand);
-            //EvaluateHand(ref dealerHand);
+            EvaluateHand(ref dealerHand);
+            var winner = CompareHands();
+            RevealCards(winner);
         }
     }
 }
