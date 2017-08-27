@@ -101,7 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 341);
+            this.ClientSize = new System.Drawing.Size(480, 341);
             this.Controls.Add(this.btnAddOrderRow);
             this.Controls.Add(this.dgvOrderRows);
             this.Controls.Add(this.btnAddOrder);
@@ -111,6 +111,7 @@
             this.Controls.Add(this.cboOrders);
             this.Name = "CLexerciseForm1";
             this.Text = "CLexerciseForm1";
+            this.Load += new System.EventHandler(this.CLexerciseForm1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderRows)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

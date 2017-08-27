@@ -36,6 +36,11 @@ namespace DataLayer
         {
             return orders;
         }
+
+        public bool ContainsOrder(string description)
+        {
+            return orders.Count(o => o.Description.Equals(description)) > 0;
+        }
         #endregion
 
     }
