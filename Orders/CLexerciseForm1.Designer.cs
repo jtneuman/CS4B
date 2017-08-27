@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cboOrders = new System.Windows.Forms.ComboBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnRemoveOrder = new System.Windows.Forms.Button();
@@ -35,16 +36,26 @@
             this.btnAddOrder = new System.Windows.Forms.Button();
             this.dgvOrderRows = new System.Windows.Forms.DataGridView();
             this.btnAddOrderRow = new System.Windows.Forms.Button();
+            this.orderRowBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.orderRowIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderRows)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderRowBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // cboOrders
             // 
+            this.cboOrders.DataSource = this.orderRowBindingSource;
+            this.cboOrders.DisplayMember = "OrderId";
             this.cboOrders.FormattingEnabled = true;
             this.cboOrders.Location = new System.Drawing.Point(13, 13);
             this.cboOrders.Name = "cboOrders";
             this.cboOrders.Size = new System.Drawing.Size(236, 21);
             this.cboOrders.TabIndex = 0;
+            this.cboOrders.ValueMember = "Product";
+            this.cboOrders.SelectedIndexChanged += new System.EventHandler(this.cboOrders_SelectedIndexChanged);
             // 
             // txtDescription
             // 
@@ -61,6 +72,7 @@
             this.btnRemoveOrder.TabIndex = 2;
             this.btnRemoveOrder.Text = "Remove Order";
             this.btnRemoveOrder.UseVisualStyleBackColor = true;
+            this.btnRemoveOrder.Click += new System.EventHandler(this.btnRemoveOrder_Click);
             // 
             // btnUpdateOrder
             // 
@@ -70,6 +82,7 @@
             this.btnUpdateOrder.TabIndex = 3;
             this.btnUpdateOrder.Text = "Update Order";
             this.btnUpdateOrder.UseVisualStyleBackColor = true;
+            this.btnUpdateOrder.Click += new System.EventHandler(this.btnUpdateOrder_Click);
             // 
             // btnAddOrder
             // 
@@ -79,14 +92,23 @@
             this.btnAddOrder.TabIndex = 4;
             this.btnAddOrder.Text = "Add Order";
             this.btnAddOrder.UseVisualStyleBackColor = true;
+            this.btnAddOrder.Click += new System.EventHandler(this.btnAddOrder_Click);
             // 
             // dgvOrderRows
             // 
+            this.dgvOrderRows.AutoGenerateColumns = false;
             this.dgvOrderRows.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrderRows.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.orderRowIdDataGridViewTextBoxColumn,
+            this.orderIdDataGridViewTextBoxColumn,
+            this.productDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn});
+            this.dgvOrderRows.DataSource = this.orderRowBindingSource;
             this.dgvOrderRows.Location = new System.Drawing.Point(13, 86);
             this.dgvOrderRows.Name = "dgvOrderRows";
             this.dgvOrderRows.Size = new System.Drawing.Size(452, 150);
             this.dgvOrderRows.TabIndex = 5;
+            this.dgvOrderRows.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvOrderRows_UserDeletingRow);
             // 
             // btnAddOrderRow
             // 
@@ -96,6 +118,35 @@
             this.btnAddOrderRow.TabIndex = 6;
             this.btnAddOrderRow.Text = "Add Order Row";
             this.btnAddOrderRow.UseVisualStyleBackColor = true;
+            this.btnAddOrderRow.Click += new System.EventHandler(this.btnAddOrderRow_Click);
+            // 
+            // orderRowBindingSource
+            // 
+            this.orderRowBindingSource.DataSource = typeof(DataLayer.OrderRow);
+            // 
+            // orderRowIdDataGridViewTextBoxColumn
+            // 
+            this.orderRowIdDataGridViewTextBoxColumn.DataPropertyName = "OrderRowId";
+            this.orderRowIdDataGridViewTextBoxColumn.HeaderText = "OrderRowId";
+            this.orderRowIdDataGridViewTextBoxColumn.Name = "orderRowIdDataGridViewTextBoxColumn";
+            // 
+            // orderIdDataGridViewTextBoxColumn
+            // 
+            this.orderIdDataGridViewTextBoxColumn.DataPropertyName = "OrderId";
+            this.orderIdDataGridViewTextBoxColumn.HeaderText = "OrderId";
+            this.orderIdDataGridViewTextBoxColumn.Name = "orderIdDataGridViewTextBoxColumn";
+            // 
+            // productDataGridViewTextBoxColumn
+            // 
+            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
+            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
+            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
             // 
             // CLexerciseForm1
             // 
@@ -113,6 +164,7 @@
             this.Text = "CLexerciseForm1";
             this.Load += new System.EventHandler(this.CLexerciseForm1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderRows)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderRowBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,5 +179,10 @@
         private System.Windows.Forms.Button btnAddOrder;
         private System.Windows.Forms.DataGridView dgvOrderRows;
         private System.Windows.Forms.Button btnAddOrderRow;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderRowIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource orderRowBindingSource;
     }
 }
