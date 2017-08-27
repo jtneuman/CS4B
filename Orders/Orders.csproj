@@ -46,6 +46,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Customer.cs" />
+    <Compile Include="CLexerciseForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CLexerciseForm1.Designer.cs">
+      <DependentUpon>CLexerciseForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CLformAddOrderRow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CLformAddOrderRow.Designer.cs">
+      <DependentUpon>CLformAddOrderRow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +72,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CLexerciseForm1.resx">
+      <DependentUpon>CLexerciseForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CLformAddOrderRow.resx">
+      <DependentUpon>CLformAddOrderRow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,9 +107,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj">
-      <Project>{70cc4730-c02b-4834-af6c-a4060714a2d4}</Project>
-      <Name>ClassLibrary1</Name>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{622a5bb4-144c-469d-b027-1a02328b7d2f}</Project>
+      <Name>DataLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
