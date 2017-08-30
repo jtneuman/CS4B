@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Exercises.Chapter11.EventExample;
+using Exercises.Chapter11.VideoRentalwithEvents;
 
 namespace Exercises
 {
@@ -17,7 +18,7 @@ namespace Exercises
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EventExampleMain());
+            Application.Run(new VideoRentalForm());
         }
     }
 }
