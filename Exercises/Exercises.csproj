@@ -54,10 +54,22 @@
     </Compile>
     <Compile Include="Chapter10\ExerciseA\Interfaces\IEmployee.cs" />
     <Compile Include="Chapter10\ExerciseA\Interfaces\IPerson.cs" />
-    <Compile Include="Chapter10\ExerciseA\Program.cs" />
+    <Compile Include="Chapter11\EventExample\Classes\Order.cs" />
+    <Compile Include="Chapter11\EventExample\Classes\OrderRow.cs" />
+    <Compile Include="Chapter11\EventExample\EventExampleMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Chapter11\EventExample\EventExampleMain.Designer.cs">
+      <DependentUpon>EventExampleMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chapter11\EventExample\Classes\Product.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Chapter10\ExerciseA\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chapter11\EventExample\EventExampleMain.resx">
+      <DependentUpon>EventExampleMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -68,6 +80,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\Exercises.Chapter11.EventExample.EventExampleMain.datasource" />
+    <None Include="Properties\DataSources\Exercises.Chapter11.EventExample.Product.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
