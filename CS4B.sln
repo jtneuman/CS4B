@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JediVsSith", "JediVsSith\Je
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTraits", "CommonTraits\CommonTraits.csproj", "{32C5C36F-D164-495B-8A4F-5C5297E7EC29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jedis", "Jedis\Jedis.csproj", "{0C7E36D3-F465-4FC6-8775-1A454813C638}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Siths", "Siths\Siths.csproj", "{74904D13-3D5E-41CC-95C6-2209B82C35DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{32C5C36F-D164-495B-8A4F-5C5297E7EC29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32C5C36F-D164-495B-8A4F-5C5297E7EC29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32C5C36F-D164-495B-8A4F-5C5297E7EC29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C7E36D3-F465-4FC6-8775-1A454813C638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C7E36D3-F465-4FC6-8775-1A454813C638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C7E36D3-F465-4FC6-8775-1A454813C638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C7E36D3-F465-4FC6-8775-1A454813C638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74904D13-3D5E-41CC-95C6-2209B82C35DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74904D13-3D5E-41CC-95C6-2209B82C35DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74904D13-3D5E-41CC-95C6-2209B82C35DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74904D13-3D5E-41CC-95C6-2209B82C35DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
