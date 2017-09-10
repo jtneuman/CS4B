@@ -6,16 +6,5 @@ using System.Threading.Tasks;
 
 namespace CommonTraits.Enums
 {
-    public enum Races
-    {
-        Human,
-        Gungan,
-        Other
-    }
 
-    public enum Force
-    {
-        DarkSide,
-        LightSide
-    }
 }
