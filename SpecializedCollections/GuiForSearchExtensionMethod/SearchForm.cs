@@ -11,11 +11,11 @@ using SpecializedCollections.Classes;
 
 namespace GuiForSearchExtensionMethod
 {
-    public partial class Form1 : Form
+    public partial class SearchForm : Form
     {
         Repository<Car> carRepository = new Repository<Car>();
 
-        public Form1()
+        public SearchForm()
         {
             InitializeComponent();
 

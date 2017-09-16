@@ -36,6 +36,15 @@ namespace SpecializedCollections.Classes
                 
             }
             return result;
+        } // end Search method
+
+        public static void Output<T>(this IEnumerable<T> items, 
+            Action<T> print) where T : class, IRegisterable, new()
+        {
+            foreach (var item in items)
+            {
+                print(item);
+            }
         }
     }
 }
