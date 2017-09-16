@@ -54,5 +54,12 @@ namespace GuiForSearchExtensionMethod
             lstResult.DataSource = carRepository.Search(txtSearch.Text);
             lstResult.DisplayMember = "DisplayValue";
         }
+
+        private void btnPrintToListBox_Click(object sender, EventArgs e)
+        {
+            lstResult.Items.Clear();
+            carRepository.Search(txtSearch.Text).Output(
+                a => lstResult.Items.Add(a.DisplayValue));
+        }
     }
 }

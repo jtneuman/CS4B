@@ -108,6 +108,7 @@
             this.btnPrintToListBox.TabIndex = 7;
             this.btnPrintToListBox.Text = "PrintToListBox";
             this.btnPrintToListBox.UseVisualStyleBackColor = true;
+            this.btnPrintToListBox.Click += new System.EventHandler(this.btnPrintToListBox_Click);
             // 
             // btnPrintToComboxBox
             // 
