@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6BF27010-1D79-461A-8809-02ACD07E9676}</ProjectGuid>
+    <ProjectGuid>{0E5387D0-45A3-4FBC-A8E4-E1C1AF896DDD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SpecializedCollections</RootNamespace>
-    <AssemblyName>SpecializedCollections</AssemblyName>
+    <RootNamespace>GuiForSearchExtensionMethod</RootNamespace>
+    <AssemblyName>GuiForSearchExtensionMethod</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,17 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Car.cs" />
-    <Compile Include="Classes\Extensions.cs" />
-    <Compile Include="Classes\Motorcycle.cs" />
-    <Compile Include="Classes\Repository.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IRegisterable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -83,6 +78,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SpecializedCollections\SpecializedCollections.csproj">
+      <Project>{6bf27010-1d79-461a-8809-02acd07e9676}</Project>
+      <Name>SpecializedCollections</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
