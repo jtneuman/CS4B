@@ -127,6 +127,7 @@
             this.btnCallFunc.TabIndex = 9;
             this.btnCallFunc.Text = "Call Func";
             this.btnCallFunc.UseVisualStyleBackColor = true;
+            this.btnCallFunc.Click += new System.EventHandler(this.btnCallFunc_Click);
             // 
             // btnCallPredicate
             // 

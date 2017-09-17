@@ -61,5 +61,21 @@ namespace GuiForSearchExtensionMethod
             carRepository.Search(txtSearch.Text).Output(
                 a => lstResult.Items.Add(a.DisplayValue));
         }
+
+        private void btnCallFunc_Click(object sender, EventArgs e)
+        {
+            // Create a Func which takes a string (search)
+            // and return a Car object by calling the 
+            // Search method with the search text and 
+            // returning the first item found.
+            Func<string, Car> FirstMatch = search => // defines the Func delegate
+                carRepository.Search(search).FirstOrDefault(); // the method called
+
+            //Call the Func
+            var result = FirstMatch(txtSearch.Text);
+
+            // Display the result
+            lblResult.Text = result != null ? result.DisplayValue : "No car found";
+        }
     }
 }
