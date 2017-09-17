@@ -137,6 +137,7 @@
             this.btnCallPredicate.TabIndex = 10;
             this.btnCallPredicate.Text = "Call Predicate";
             this.btnCallPredicate.UseVisualStyleBackColor = true;
+            this.btnCallPredicate.Click += new System.EventHandler(this.btnCallPredicate_Click);
             // 
             // SearchForm
             // 

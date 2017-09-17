@@ -77,5 +77,14 @@ namespace GuiForSearchExtensionMethod
             // Display the result
             lblResult.Text = result != null ? result.DisplayValue : "No car found";
         }
+
+        private void btnCallPredicate_Click(object sender, EventArgs e)
+        {
+            Predicate<string> Contains = search => // defines the predicate delegate
+                carRepository.Search(search).Count() > 0; //the method to call
+            // Call the predicate and display the result
+            var result = Contains(txtSearch.Text);
+            lblResult.Text = result.ToString();
+        }
     }
 }
