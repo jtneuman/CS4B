@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Data Source\TestData.cs" />
     <Compile Include="Entities\Booking.cs" />
     <Compile Include="Entities\Car.cs" />
     <Compile Include="Entities\Customer.cs" />
@@ -54,7 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data Layers\" />
-    <Folder Include="Data Source\" />
     <Folder Include="Enums\" />
     <Folder Include="Exceptions\" />
   </ItemGroup>
