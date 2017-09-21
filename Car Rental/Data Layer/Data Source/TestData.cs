@@ -21,7 +21,7 @@ namespace Data_Layer.Data_Source
 
         #region Methods
 
-        internal static void Seed()
+        internal void Seed()
         {
 
             // VehicleType Collection

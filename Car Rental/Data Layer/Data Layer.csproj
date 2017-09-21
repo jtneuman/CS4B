@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Data Layers\CollectionDataLayer.cs" />
     <Compile Include="Data Source\TestData.cs" />
     <Compile Include="Entities\Booking.cs" />
     <Compile Include="Entities\Car.cs" />
@@ -49,12 +49,13 @@
     <Compile Include="Entities\VehicleType.cs" />
     <Compile Include="Interfaces\IBooking.cs" />
     <Compile Include="Interfaces\ICustomer.cs" />
+    <Compile Include="Interfaces\IDataLayer.cs" />
+    <Compile Include="Interfaces\IRentalBase.cs" />
     <Compile Include="Interfaces\IVehicle.cs" />
     <Compile Include="Interfaces\IVehicleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data Layers\" />
     <Folder Include="Enums\" />
     <Folder Include="Exceptions\" />
   </ItemGroup>

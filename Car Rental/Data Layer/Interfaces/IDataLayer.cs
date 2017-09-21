@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business_Layer
+namespace Data_Layer.Interfaces
 {
-    public class Class1
+    public interface IDataLayer : IRentalBase
     {
+
     }
 }
