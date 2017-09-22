@@ -8,5 +8,17 @@ namespace Data_Layer.Interfaces
 {
     public interface IRentalBase
     {
+
+        #region Action Methods
+
+
+
+        #endregion
+
+        #region Fetch Methods
+
+        IEnumerable<ICustomer> GetCustomers();
+
+        #endregion
     }
 }

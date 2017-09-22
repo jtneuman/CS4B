@@ -25,5 +25,33 @@ namespace Business_Layer.Classes
 
         #endregion
 
+        #region Action Methods
+
+
+
+        #endregion
+
+        #region Fetch Methods
+
+        public IEnumerable<ICustomer> GetCustomers()
+        {
+            try
+            {
+                return DataLayer.GetCustomers();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        #endregion
+
+        #region Helper Methods
+
+
+        #endregion
     }
 }

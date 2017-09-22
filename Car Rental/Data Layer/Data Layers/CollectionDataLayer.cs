@@ -15,5 +15,30 @@ namespace Data_Layer.Data_Layers
         {
             new TestData().Seed();
         }
+
+
+        #region Action Methods
+
+
+
+        #endregion
+
+        #region Fetch Methods
+
+        public IEnumerable<ICustomer> GetCustomers()
+        {
+            return TestData.Customers;
+        }
+
+        #endregion
+
+        #region Helper Methods
+
+
+
+        #endregion
+
+
+
     }
 }
