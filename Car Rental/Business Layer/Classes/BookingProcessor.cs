@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Business_Layer.Interfaces;
+using Data_Layer.Enums;
 using Data_Layer.Interfaces;
 
 namespace Business_Layer.Classes
@@ -45,6 +46,32 @@ namespace Business_Layer.Classes
                 throw;
             }
 
+        }
+
+        public IEnumerable<IVehicle> GetVehicles(VehicleStatus status)
+        {
+            try
+            {
+                return DataLayer.GetVehicles(status);
+            }
+            catch
+            {
+
+                throw;
+            };
+        }
+
+        public IVehicleType GetVehicleType(int vehicleTypeId)
+        {
+            try
+            {
+                return DataLayer.GetVehicleType(vehicleTypeId);
+            }
+            catch
+            {
+
+                throw;
+            };
         }
 
         #endregion

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Business_Layer.Classes;
 using Business_Layer.Interfaces;
 using Data_Layer.Data_Layers;
+using Data_Layer.Enums;
 using Car_Rental.Classes;
 
 namespace Car_Rental
@@ -29,11 +30,11 @@ namespace Car_Rental
             processor = new BookingProcessor(new CollectionDataLayer());
 
             FillCustomers();
+            FillAvailableVehicles();
         }
 
+        #region Fill Data Methods
 
-
-        #region Fetch Data Methods
 
         private void FillCustomers()
         {
@@ -56,6 +57,33 @@ namespace Car_Rental
 
                 throw;
             }
+        }// end fill customers method
+
+        private void FillAvailableVehicles()
+        {
+            var vehicles = GetVehicles(VehicleStatus.Available);
+            lvwAvailableVehicles.Items.Clear();
+            lvwAvailableVehicles.Items.AddRange(vehicles.ToArray());
+        }
+
+        #endregion
+
+
+        #region Fetch Data Methods
+
+        private IEnumerable<ListViewItem> GetVehicles(VehicleStatus vehicleStatus)
+        {
+            return from v in processor.GetVehicles(vehicleStatus)
+                   select new ListViewItem(new string[]
+                   {
+                       processor.GetVehicleType(v.TypeId).Name,
+                       v.RegistrationNumber,
+                       v.BasePricePerKm.ToString(),
+                       v.BasePricePerDay.ToString(),
+                       v.Meter.ToString(),
+                       v.Id.ToString(),
+                       "0" // BookingId
+                   });
         }
 
         #endregion
