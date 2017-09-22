@@ -90,7 +90,37 @@ namespace Car_Rental
 
         #region Action Methods
 
+        private bool RentVehicle()
+        {
+            bool success = false;
+            try
+            {
+                if(cboCustomers.SelectedIndex < 0)
+                {
+                    MessageBox.Show(
+                        "A Customer must be selected in the drop down list");
+                    return success;
+                }
+                if(lvwAvailableVehicles.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("A vehicle must be selected in the list");
+                    return success;
+                }
 
+                var vehicledId = Int32.Parse(
+                    lvwAvailableVehicles.SelectedItems[0].SubItems[5].Text);
+
+                var customerId = ((ComboCustomer)cboCustomers.SelectedItem).Id;
+
+                success = processor.RentVehicle(vehicledId, customerId, DateTime.Now);
+                FillAvailableVehicles();
+            }
+            catch 
+            {
+                success = false;
+            }
+            return success;
+        }
 
         #endregion
 
@@ -102,7 +132,10 @@ namespace Car_Rental
 
         #region Button Events
 
-
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+            var rented = RentVehicle();
+        }
 
         #endregion
 
@@ -110,5 +143,7 @@ namespace Car_Rental
         {
 
         }
+
+
     }
 }

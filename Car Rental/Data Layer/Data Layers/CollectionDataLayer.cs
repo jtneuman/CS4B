@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Data_Layer.Interfaces;
 using Data_Layer.Data_Source;
 using Data_Layer.Enums;
+using Data_Layer.Entities;
 
 namespace Data_Layer.Data_Layers
 {
@@ -20,7 +21,27 @@ namespace Data_Layer.Data_Layers
 
         #region Action Methods
 
+        public bool RentVehicle(int vehicleId, int customerId, DateTime timeOfRental)
+        {
+            try
+            {
+                var bookingId = TestData.Bookings.Max(b => b.Id) + 1;
 
+                TestData.Bookings.Add(new Booking()
+                {
+                    Id = bookingId,
+                    CustomerId = customerId,
+                    Rented = timeOfRental,
+                    VehicleId = vehicleId
+                });
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            };
+        }
 
         #endregion
 
@@ -59,6 +80,8 @@ namespace Data_Layer.Data_Layers
             return TestData.VehicleTypes.FirstOrDefault(
                 vt => vt.Id.Equals(vehicleTypeId));
         }
+
+
 
         #endregion
 

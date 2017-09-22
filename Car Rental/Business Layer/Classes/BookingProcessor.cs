@@ -28,7 +28,18 @@ namespace Business_Layer.Classes
 
         #region Action Methods
 
+        public bool RentVehicle(int vehicleId, int customerId, DateTime timeOfRental)
+        {
+            try
+            {
+                return DataLayer.RentVehicle(vehicleId, customerId, DateTime.Now);
+            }
+            catch (Exception)
+            {
 
+                throw;
+            };
+        }
 
         #endregion
 
@@ -73,6 +84,8 @@ namespace Business_Layer.Classes
                 throw;
             };
         }
+
+
 
         #endregion
 
