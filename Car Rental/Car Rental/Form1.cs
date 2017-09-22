@@ -29,6 +29,7 @@ namespace Car_Rental
         }
 
 
+
         #region Fill Data Methods
 
 
@@ -53,6 +54,9 @@ namespace Car_Rental
 
         #endregion
 
+        private void tabRentVehicle_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
