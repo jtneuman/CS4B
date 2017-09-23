@@ -80,10 +80,7 @@ namespace Data_Layer.Data_Layers
             };
         }
 
-        public IEnumerable<IBooking> GetBookings()
-        {
-            throw new NotImplementedException();
-        }
+
 
         #endregion
 
@@ -121,6 +118,11 @@ namespace Data_Layer.Data_Layers
         {
             return TestData.VehicleTypes.FirstOrDefault(
                 vt => vt.Id.Equals(vehicleTypeId));
+        }
+
+        public IEnumerable<IBooking> GetBookings()
+        {
+                return TestData.Bookings;
         }
 
         #endregion

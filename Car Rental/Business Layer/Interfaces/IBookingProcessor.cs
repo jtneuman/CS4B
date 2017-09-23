@@ -10,5 +10,7 @@ namespace Business_Layer.Interfaces
     public interface IBookingProcessor : IRentalBase
     {
         IDataLayer DataLayer { get; }
+
+        IBooking GetBooking(int vehicleId);
     }
 }

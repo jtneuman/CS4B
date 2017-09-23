@@ -41,6 +41,21 @@ namespace Business_Layer.Classes
             };
         }
 
+        public double ReturnVehicle(int bookingId, double meter, DateTime returned)
+        {
+            try
+            {
+                return DataLayer.ReturnVehicle(bookingId, meter, returned);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            };
+        }
+
+
+
         #endregion
 
         #region Fetch Methods
@@ -79,6 +94,35 @@ namespace Business_Layer.Classes
                 return DataLayer.GetVehicleType(vehicleTypeId);
             }
             catch
+            {
+
+                throw;
+            };
+        }
+
+        public IEnumerable<IBooking> GetBookings()
+        {
+            try
+            {
+                return DataLayer.GetBookings();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            };
+        }
+
+        public IBooking GetBooking(int vehicleId)
+        {
+            try
+            {
+                return (from b in DataLayer.GetBookings()
+                        where b.VehicleId.Equals(vehicleId) &&
+                              b.Returned.Equals(DateTime.MinValue)
+                        select b).FirstOrDefault();
+            }
+            catch (Exception)
             {
 
                 throw;

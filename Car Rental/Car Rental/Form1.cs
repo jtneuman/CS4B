@@ -12,6 +12,7 @@ using Business_Layer.Interfaces;
 using Data_Layer.Data_Layers;
 using Data_Layer.Enums;
 using Car_Rental.Classes;
+using System.Text.RegularExpressions;
 
 namespace Car_Rental
 {
@@ -133,7 +134,51 @@ namespace Car_Rental
 
         #endregion
 
+        private bool ReturnVehicle()
+        {
+            bool success = false;
+
+            try
+            {
+                if (!IsNumeric(txtMeterReturn.Text))
+                {
+                    MessageBox.Show("The meter setting must be a number");
+                    return success;
+                }
+                if (lvwBookedVehicles.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("A vehicle must be selected in the list");
+                    return success;
+                }
+
+                var vehicleId = Int32.Parse(
+                    lvwBookedVehicles.SelectedItems[0].SubItems[5].Text);
+
+                var bookingId = processor.GetBooking(vehicleId).Id;
+                processor.ReturnVehicle(bookingId,
+                    double.Parse(txtMeterReturn.Text), DateTime.Now);
+
+                FillAvailableVehicles();
+                FillBookedVehicles();
+
+                txtMeterReturn.Text = String.Empty;
+
+                success = true;
+            }
+            catch (Exception)
+            {
+
+                success = false;
+            }
+            return success;
+        }
+
         #region Helper Methods
+        public bool IsNumeric(string text)
+        {
+            Regex regex = new Regex(@"^[-+]?[0-9]*\.?[0-9]+$");
+            return regex.IsMatch(text);
+        }
 
 
 
@@ -153,6 +198,11 @@ namespace Car_Rental
 
         }
 
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            var returned = ReturnVehicle();
 
+            if (!returned) MessageBox.Show("The vehicle was not returned");
+        }
     }
 }
