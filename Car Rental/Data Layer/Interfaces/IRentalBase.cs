@@ -13,6 +13,9 @@ namespace Data_Layer.Interfaces
         #region Action Methods
 
         bool RentVehicle(int vehicleId, int customerId, DateTime timeOfRental);
+        double ReturnVehicle(int bookingId, double meter,
+            DateTime returned);
+        IEnumerable<IBooking> GetBookings();
 
         #endregion
 

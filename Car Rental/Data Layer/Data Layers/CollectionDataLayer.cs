@@ -7,6 +7,7 @@ using Data_Layer.Interfaces;
 using Data_Layer.Data_Source;
 using Data_Layer.Enums;
 using Data_Layer.Entities;
+using Data_Layer.Exceptions;
 
 namespace Data_Layer.Data_Layers
 {
@@ -41,6 +42,47 @@ namespace Data_Layer.Data_Layers
 
                 throw;
             };
+        }
+
+        public double ReturnVehicle(int bookingId, double meter, DateTime returned)
+        {
+            try
+            {
+                var booking = TestData.Bookings.FirstOrDefault(b => b.Id.Equals(bookingId) && b.Returned.Equals(DateTime.MinValue));
+
+                // Throw exception if something wron with the booking object
+                if (booking == null) throw new BookingException(bookingId);
+                if (booking.VehicleId == 0 || booking.VehicleId < 1) throw new BookingException(bookingId);
+                if (booking.Rented.Date == DateTime.MinValue) throw new BookingException(bookingId);
+                if (booking.Rented.Date > returned) throw new BookingException(bookingId, "Rental date is greater than the return date.");
+                if (returned == DateTime.MinValue) throw new BookingException(bookingId, "The car is still rented out.");
+
+                var vehicle = TestData.Vehicles.FirstOrDefault(v => v.Id.Equals(booking.VehicleId));
+
+                // Throw exception it there is something wrong with the vehicle object.
+                if (vehicle == null) throw new VehicleException(vehicle.Id, "The vehicle is not rented out.");
+                if (vehicle.Meter > meter) throw new VehicleException(vehicle.Id, "The meter setting is lower than the current meter setting.");
+
+                // calculate the cost.
+                var duration = RentalDuration(booking.Rented, returned);
+                var cost = CalculatePrice(vehicle, meter, duration);
+                booking.Returned = returned;
+                booking.Cost = cost;
+                vehicle.Meter = meter;
+
+                return cost;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            };
+        }
+
+        public IEnumerable<IBooking> GetBookings()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -81,11 +123,27 @@ namespace Data_Layer.Data_Layers
                 vt => vt.Id.Equals(vehicleTypeId));
         }
 
-
-
         #endregion
 
         #region Helper Methods
+
+        public int RentalDuration(DateTime rented, DateTime returned)
+        {
+            TimeSpan time = returned - rented;
+
+            if (time.Days == 0 && returned.TimeOfDay - rented.TimeOfDay > TimeSpan.MinValue)
+            {
+                return 1;
+            }
+            else
+                return time.Days;
+
+        }
+
+        public double CalculatePrice(IVehicle vehicle, double returnedMeterSetting, int duration)
+        {
+            return vehicle.BasePricePerDay * duration * vehicle.DayTariff + vehicle.BasePricePerKm * (returnedMeterSetting - vehicle.Meter) * vehicle.KmTariff;
+        }
 
 
 

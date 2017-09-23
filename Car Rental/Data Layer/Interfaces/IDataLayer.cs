@@ -8,6 +8,11 @@ namespace Data_Layer.Interfaces
 {
     public interface IDataLayer : IRentalBase
     {
+        #region Helper Methods
 
+        int RentalDuration(DateTime rented, DateTime returned);
+        double CalculatePrice(IVehicle vehicle, double returnedMeterSetting, int duration);
+
+        #endregion
     }
 }
