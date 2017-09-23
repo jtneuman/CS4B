@@ -118,8 +118,8 @@ namespace Data_Layer.Data_Source
                 Id = 2,
                 VehicleId = 2,
                 Rented = DateTime.Now,
-                //Returned = DateTime.Now.AddDays(1),
-                //Cost = 400,
+                Returned = DateTime.Now.AddDays(1),
+                Cost = 400,
                 CustomerId = 1
             });
 

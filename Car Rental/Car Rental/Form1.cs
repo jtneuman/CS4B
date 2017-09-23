@@ -31,6 +31,7 @@ namespace Car_Rental
 
             FillCustomers();
             FillAvailableVehicles();
+            FillBookedVehicles();
         }
 
         #region Fill Data Methods
@@ -64,6 +65,13 @@ namespace Car_Rental
             var vehicles = GetVehicles(VehicleStatus.Available);
             lvwAvailableVehicles.Items.Clear();
             lvwAvailableVehicles.Items.AddRange(vehicles.ToArray());
+        }
+
+        private void FillBookedVehicles()
+        {
+            var vehicles = GetVehicles(VehicleStatus.Booked);
+            lvwBookedVehicles.Items.Clear();
+            lvwBookedVehicles.Items.AddRange(vehicles.ToArray());
         }
 
         #endregion
@@ -114,6 +122,7 @@ namespace Car_Rental
 
                 success = processor.RentVehicle(vehicledId, customerId, DateTime.Now);
                 FillAvailableVehicles();
+                FillBookedVehicles();
             }
             catch 
             {
