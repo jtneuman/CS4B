@@ -129,6 +129,19 @@ namespace Business_Layer.Classes
             };
         }
 
+        public IEnumerable<IVehicleType> GetVehicleTypes()
+        {
+            try
+            {
+                return DataLayer.GetVehicleTypes();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
 
 
         #endregion

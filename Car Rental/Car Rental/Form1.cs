@@ -34,6 +34,7 @@ namespace Car_Rental
             FillAvailableVehicles();
             FillBookedVehicles();
             FillBookedVehicles();
+            FillVehicleTypes();
         }
 
         #region Fill Data Methods
@@ -110,6 +111,20 @@ namespace Car_Rental
             }
         }
 
+        private void FillVehicleTypes()
+        {
+            try
+            {
+                cboTypes.DataSource = processor.GetVehicleTypes();
+                cboTypes.DisplayMember = "Name";
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         #endregion
 
 
@@ -129,6 +144,8 @@ namespace Car_Rental
                        "0" // BookingId
                    });
         }
+
+
 
         #endregion
 

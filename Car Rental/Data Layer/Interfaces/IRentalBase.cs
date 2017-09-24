@@ -23,6 +23,7 @@ namespace Data_Layer.Interfaces
 
         IEnumerable<ICustomer> GetCustomers();
         IEnumerable<IVehicle> GetVehicles(VehicleStatus status);
+        IEnumerable<IVehicleType> GetVehicleTypes();
         IVehicleType GetVehicleType(int vehicleTypeId);
 
         #endregion

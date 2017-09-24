@@ -125,6 +125,11 @@ namespace Data_Layer.Data_Layers
                 return TestData.Bookings;
         }
 
+        public IEnumerable<IVehicleType> GetVehicleTypes()
+        {
+            return TestData.VehicleTypes;
+        }
+
         #endregion
 
         #region Helper Methods
@@ -146,6 +151,8 @@ namespace Data_Layer.Data_Layers
         {
             return vehicle.BasePricePerDay * duration * vehicle.DayTariff + vehicle.BasePricePerKm * (returnedMeterSetting - vehicle.Meter) * vehicle.KmTariff;
         }
+
+
 
 
 
