@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Business_Layer.Interfaces;
 using Data_Layer.Enums;
+using Data_Layer.Exceptions;
 using Data_Layer.Interfaces;
 
 namespace Business_Layer.Classes
@@ -54,7 +55,28 @@ namespace Business_Layer.Classes
             };
         }
 
+        public bool AddVehicle(IVehicle vehicle)
+        {
+            try
+            {
+                if (vehicle.Id > 0 || vehicle.Meter < 0 || 
+                    vehicle.RegistrationNumber.Equals(String.Empty) ||
+                    vehicle.TypeId < 1)
+                {
+                    throw new VehicleException(vehicle.Id,
+                        "The vehicle has erroneous data.");
+                }
+                return DataLayer.AddVehicle(vehicle);
+                // or 
+                // DataLayer.AddVehicle(vehicle);
+                // return
+            }
+            catch (Exception)
+            {
 
+                throw;
+            };
+        }
 
         #endregion
 
@@ -141,6 +163,7 @@ namespace Business_Layer.Classes
                 throw;
             }
         }
+
 
 
 

@@ -80,7 +80,21 @@ namespace Data_Layer.Data_Layers
             };
         }
 
+        public bool AddVehicle(IVehicle vehicle)
+        {
+            try
+            {
+                vehicle.Id = TestData.Vehicles.Max(b => b.Id) + 1;
+                // adding to vehicles coll in testdata class
+                TestData.Vehicles.Add(vehicle);
+                return true;
+            }
+            catch (Exception)
+            {
 
+                throw;
+            };
+        }
 
         #endregion
 
@@ -151,6 +165,7 @@ namespace Data_Layer.Data_Layers
         {
             return vehicle.BasePricePerDay * duration * vehicle.DayTariff + vehicle.BasePricePerKm * (returnedMeterSetting - vehicle.Meter) * vehicle.KmTariff;
         }
+
 
 
 

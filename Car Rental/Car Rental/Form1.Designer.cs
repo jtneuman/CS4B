@@ -40,16 +40,16 @@
             this.lblCustomers = new System.Windows.Forms.Label();
             this.cboCustomers = new System.Windows.Forms.ComboBox();
             this.lblAvailableVehicles = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabReturnVehicle = new System.Windows.Forms.TabPage();
             this.lblMeterSetting = new System.Windows.Forms.Label();
             this.lblBookedVehicles = new System.Windows.Forms.Label();
             this.btnReturn = new System.Windows.Forms.Button();
             this.txtMeterReturn = new System.Windows.Forms.TextBox();
             this.lvwBookedVehicles = new System.Windows.Forms.ListView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabBookings = new System.Windows.Forms.TabPage();
             this.lblBookings = new System.Windows.Forms.Label();
             this.lvwBookings = new System.Windows.Forms.ListView();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabAddData = new System.Windows.Forms.TabPage();
             this.gbxAddCustomer = new System.Windows.Forms.GroupBox();
             this.btnAddCustomer = new System.Windows.Forms.Button();
             this.lblLastName = new System.Windows.Forms.Label();
@@ -69,9 +69,9 @@
             this.btnCloseForm = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabRentVehicle.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
+            this.tabReturnVehicle.SuspendLayout();
+            this.tabBookings.SuspendLayout();
+            this.tabAddData.SuspendLayout();
             this.gbxAddCustomer.SuspendLayout();
             this.gbxAddCar.SuspendLayout();
             this.SuspendLayout();
@@ -113,9 +113,9 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabRentVehicle);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabReturnVehicle);
+            this.tabControl1.Controls.Add(this.tabBookings);
+            this.tabControl1.Controls.Add(this.tabAddData);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -174,20 +174,20 @@
             this.lblAvailableVehicles.TabIndex = 1;
             this.lblAvailableVehicles.Text = "Available Vehicles";
             // 
-            // tabPage2
+            // tabReturnVehicle
             // 
-            this.tabPage2.Controls.Add(this.lblMeterSetting);
-            this.tabPage2.Controls.Add(this.lblBookedVehicles);
-            this.tabPage2.Controls.Add(this.btnReturn);
-            this.tabPage2.Controls.Add(this.txtMeterReturn);
-            this.tabPage2.Controls.Add(this.lvwBookedVehicles);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(659, 300);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Return Vehicle";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabReturnVehicle.Controls.Add(this.lblMeterSetting);
+            this.tabReturnVehicle.Controls.Add(this.lblBookedVehicles);
+            this.tabReturnVehicle.Controls.Add(this.btnReturn);
+            this.tabReturnVehicle.Controls.Add(this.txtMeterReturn);
+            this.tabReturnVehicle.Controls.Add(this.lvwBookedVehicles);
+            this.tabReturnVehicle.Location = new System.Drawing.Point(4, 22);
+            this.tabReturnVehicle.Name = "tabReturnVehicle";
+            this.tabReturnVehicle.Padding = new System.Windows.Forms.Padding(3);
+            this.tabReturnVehicle.Size = new System.Drawing.Size(659, 300);
+            this.tabReturnVehicle.TabIndex = 1;
+            this.tabReturnVehicle.Text = "Return Vehicle";
+            this.tabReturnVehicle.UseVisualStyleBackColor = true;
             // 
             // lblMeterSetting
             // 
@@ -232,16 +232,16 @@
             this.lvwBookedVehicles.TabIndex = 0;
             this.lvwBookedVehicles.UseCompatibleStateImageBehavior = false;
             // 
-            // tabPage3
+            // tabBookings
             // 
-            this.tabPage3.Controls.Add(this.lblBookings);
-            this.tabPage3.Controls.Add(this.lvwBookings);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(659, 300);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Bookings";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabBookings.Controls.Add(this.lblBookings);
+            this.tabBookings.Controls.Add(this.lvwBookings);
+            this.tabBookings.Location = new System.Drawing.Point(4, 22);
+            this.tabBookings.Name = "tabBookings";
+            this.tabBookings.Size = new System.Drawing.Size(659, 300);
+            this.tabBookings.TabIndex = 2;
+            this.tabBookings.Text = "Bookings";
+            this.tabBookings.UseVisualStyleBackColor = true;
             // 
             // lblBookings
             // 
@@ -260,16 +260,16 @@
             this.lvwBookings.TabIndex = 0;
             this.lvwBookings.UseCompatibleStateImageBehavior = false;
             // 
-            // tabPage4
+            // tabAddData
             // 
-            this.tabPage4.Controls.Add(this.gbxAddCustomer);
-            this.tabPage4.Controls.Add(this.gbxAddCar);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(659, 300);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Add Data";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabAddData.Controls.Add(this.gbxAddCustomer);
+            this.tabAddData.Controls.Add(this.gbxAddCar);
+            this.tabAddData.Location = new System.Drawing.Point(4, 22);
+            this.tabAddData.Name = "tabAddData";
+            this.tabAddData.Size = new System.Drawing.Size(659, 300);
+            this.tabAddData.TabIndex = 3;
+            this.tabAddData.Text = "Add Data";
+            this.tabAddData.UseVisualStyleBackColor = true;
             // 
             // gbxAddCustomer
             // 
@@ -368,6 +368,7 @@
             this.btnAddVehicle.TabIndex = 6;
             this.btnAddVehicle.Text = "Add";
             this.btnAddVehicle.UseVisualStyleBackColor = true;
+            this.btnAddVehicle.Click += new System.EventHandler(this.btnAddVehicle_Click);
             // 
             // lblType
             // 
@@ -440,11 +441,11 @@
             this.tabControl1.ResumeLayout(false);
             this.tabRentVehicle.ResumeLayout(false);
             this.tabRentVehicle.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
+            this.tabReturnVehicle.ResumeLayout(false);
+            this.tabReturnVehicle.PerformLayout();
+            this.tabBookings.ResumeLayout(false);
+            this.tabBookings.PerformLayout();
+            this.tabAddData.ResumeLayout(false);
             this.gbxAddCustomer.ResumeLayout(false);
             this.gbxAddCustomer.PerformLayout();
             this.gbxAddCar.ResumeLayout(false);
@@ -464,9 +465,9 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabRentVehicle;
         private System.Windows.Forms.Label lblAvailableVehicles;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabReturnVehicle;
+        private System.Windows.Forms.TabPage tabBookings;
+        private System.Windows.Forms.TabPage tabAddData;
         private System.Windows.Forms.Button btnRent;
         private System.Windows.Forms.Label lblCustomers;
         private System.Windows.Forms.ComboBox cboCustomers;

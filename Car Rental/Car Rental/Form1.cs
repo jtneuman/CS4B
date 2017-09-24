@@ -10,7 +10,9 @@ using System.Windows.Forms;
 using Business_Layer.Classes;
 using Business_Layer.Interfaces;
 using Data_Layer.Data_Layers;
+using Data_Layer.Entities;
 using Data_Layer.Enums;
+using Data_Layer.Interfaces;
 using Car_Rental.Classes;
 using System.Text.RegularExpressions;
 
@@ -183,9 +185,7 @@ namespace Car_Rental
                 success = false;
             }
             return success;
-        }
-
-        #endregion
+        }// end RentVehicle method
 
         private bool ReturnVehicle()
         {
@@ -227,6 +227,60 @@ namespace Car_Rental
             return success;
         }
 
+        private bool AddVehicle(IVehicle vehicle)
+        {
+            try
+            {
+                //Check the controls for erroneous data
+                string errMsg = String.Empty;
+                if (txtRegNo.TextLength == 0)
+                    errMsg = "Incorrect vehicle registration number" +
+                        Environment.NewLine;
+                if (cboTypes.SelectedIndex < 0)
+                    errMsg += "No vehicle type selected" +
+                        Environment.NewLine;
+                if (!IsNumeric(txtMeter.Text) ||
+                    (IsNumeric(txtMeter.Text) && Double.Parse(txtMeter.Text) < 0))
+                    errMsg += "The meter value is incorrect" +
+                        Environment.NewLine;
+                if (!IsNumeric(txtMeter.Text) ||
+                    Double.Parse(txtMeter.Text) < 0 || txtRegNo.TextLength == 0 ||
+                    cboTypes.SelectedIndex < 0)
+                {
+                    MessageBox.Show(errMsg);
+                    // this is set as (return false;) in example but gives an comp error.
+                    return false;
+                }
+                // assign data to the vehicle object
+                var type = ((VehicleType)cboTypes.SelectedItem);
+                vehicle.Meter = Double.Parse(txtMeter.Text);
+                vehicle.RegistrationNumber = txtRegNo.Text;
+                vehicle.TypeId = type.Id;
+                vehicle.BasePricePerDay = type.BasePricePerDay;
+                vehicle.BasePricePerKm = type.BasePricePerKm;
+                vehicle.DayTariff = type.DayTariff;
+                vehicle.KmTariff = type.KmTariff;
+
+                // Add the vehicle obj to the Vehicles collection
+                processor.AddVehicle(vehicle);
+
+                // Update the vehicle list on the Rent Vehicles tab
+                FillAvailableVehicles();
+
+                txtRegNo.Text = String.Empty;
+                txtMeter.Text = String.Empty;
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return true;
+            }
+        }
+
+        #endregion
+
         #region Helper Methods
         public bool IsNumeric(string text)
         {
@@ -259,6 +313,23 @@ namespace Car_Rental
 
         }
 
+        private void btnAddVehicle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var added = AddVehicle(new Car());
 
+                if (!added)
+                    MessageBox.Show("The vehicle was not added");
+                //tabAddData.Update(tabRentVehicle);
+                tabControl1.SelectTab(3);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 }
