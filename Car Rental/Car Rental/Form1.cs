@@ -33,6 +33,7 @@ namespace Car_Rental
             FillCustomers();
             FillAvailableVehicles();
             FillBookedVehicles();
+            FillBookedVehicles();
         }
 
         #region Fill Data Methods
@@ -73,6 +74,40 @@ namespace Car_Rental
             var vehicles = GetVehicles(VehicleStatus.Booked);
             lvwBookedVehicles.Items.Clear();
             lvwBookedVehicles.Items.AddRange(vehicles.ToArray());
+        }
+
+        private bool FillBookings()
+        {
+            try
+            {
+                var bookings =
+                    from b in processor.GetBookings()
+                    join c in processor.GetCustomers()
+                        on b.CustomerId equals c.Id
+                    join car in processor.GetVehicles(VehicleStatus.All)
+                        on b.VehicleId equals car.Id
+                    select new ListViewItem(new ListViewBooking
+                    {
+                        BookingId = b.Id,
+                        CustomerId = b.CustomerId,
+                        Cost = b.Cost,
+                        Customer = String.Format("{0} {1}", c.FirstName, c.LastName),
+                        RegistrationNumber = car.RegistrationNumber,
+                        VehicleType = processor.GetVehicleType(car.TypeId).Name,
+                        Rented = b.Rented,
+                        Returned = b.Returned
+                    }.ToArray());
+
+                lvwBookings.Items.Clear();
+                lvwBookings.Items.AddRange(bookings.ToArray());
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
 
         #endregion
@@ -124,6 +159,7 @@ namespace Car_Rental
                 success = processor.RentVehicle(vehicledId, customerId, DateTime.Now);
                 FillAvailableVehicles();
                 FillBookedVehicles();
+                FillBookings();
             }
             catch 
             {
@@ -160,6 +196,7 @@ namespace Car_Rental
 
                 FillAvailableVehicles();
                 FillBookedVehicles();
+                FillBookings();
 
                 txtMeterReturn.Text = String.Empty;
 
@@ -191,6 +228,13 @@ namespace Car_Rental
             var rented = RentVehicle();
         }
 
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            var returned = ReturnVehicle();
+
+            if (!returned) MessageBox.Show("The vehicle was not returned");
+        }
+
         #endregion
 
         private void tabRentVehicle_Click(object sender, EventArgs e)
@@ -198,11 +242,6 @@ namespace Car_Rental
 
         }
 
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            var returned = ReturnVehicle();
 
-            if (!returned) MessageBox.Show("The vehicle was not returned");
-        }
     }
 }
