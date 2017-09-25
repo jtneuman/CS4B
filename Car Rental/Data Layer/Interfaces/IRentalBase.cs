@@ -15,8 +15,10 @@ namespace Data_Layer.Interfaces
         bool RentVehicle(int vehicleId, int customerId, DateTime timeOfRental);
         double ReturnVehicle(int bookingId, double meter,
             DateTime returned);
-
+        // this is void in the book example?
         bool AddVehicle(IVehicle vehicle);
+        // this is void in the book example?
+        void AddCustomer(ICustomer customer);
 
         #endregion
 

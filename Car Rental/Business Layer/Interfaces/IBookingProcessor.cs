@@ -12,5 +12,6 @@ namespace Business_Layer.Interfaces
         IDataLayer DataLayer { get; }
 
         IBooking GetBooking(int vehicleId);
+        bool CustomerExist(string socialSecurityNumber);
     }
 }

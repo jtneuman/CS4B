@@ -94,6 +94,21 @@ namespace Data_Layer.Data_Layers
 
                 throw;
             };
+        }// end AddVehicle method
+
+        public void AddCustomer(ICustomer customer)
+        {
+            try
+            {
+                customer.Id = TestData.Customers.Max(
+                    c => c.Id) + 1;
+                TestData.Customers.Add(customer);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         #endregion

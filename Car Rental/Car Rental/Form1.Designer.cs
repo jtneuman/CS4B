@@ -67,6 +67,17 @@
             this.txtMeter = new System.Windows.Forms.TextBox();
             this.txtRegNo = new System.Windows.Forms.TextBox();
             this.btnCloseForm = new System.Windows.Forms.Button();
+            this.colRegNoReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colTypeReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colKmTariffReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colDayTariffReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colMeterReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colBookingIdBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colRegNoBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colTypeBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colCustomerBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colRentedBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colReturnedBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabRentVehicle.SuspendLayout();
             this.tabReturnVehicle.SuspendLayout();
@@ -89,10 +100,12 @@
             this.lvwAvailableVehicles.Size = new System.Drawing.Size(445, 193);
             this.lvwAvailableVehicles.TabIndex = 0;
             this.lvwAvailableVehicles.UseCompatibleStateImageBehavior = false;
+            this.lvwAvailableVehicles.View = System.Windows.Forms.View.Details;
             // 
             // colRegNo
             // 
             this.colRegNo.Text = "Registration Number";
+            this.colRegNo.Width = 120;
             // 
             // colType
             // 
@@ -226,11 +239,18 @@
             // 
             // lvwBookedVehicles
             // 
+            this.lvwBookedVehicles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colRegNoReturnVehicle,
+            this.colTypeReturnVehicle,
+            this.colKmTariffReturnVehicle,
+            this.colDayTariffReturnVehicle,
+            this.colMeterReturnVehicle});
             this.lvwBookedVehicles.Location = new System.Drawing.Point(7, 33);
             this.lvwBookedVehicles.Name = "lvwBookedVehicles";
             this.lvwBookedVehicles.Size = new System.Drawing.Size(474, 217);
             this.lvwBookedVehicles.TabIndex = 0;
             this.lvwBookedVehicles.UseCompatibleStateImageBehavior = false;
+            this.lvwBookedVehicles.View = System.Windows.Forms.View.Details;
             // 
             // tabBookings
             // 
@@ -254,11 +274,19 @@
             // 
             // lvwBookings
             // 
+            this.lvwBookings.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colBookingIdBookingsTab,
+            this.colRegNoBookingsTab,
+            this.colTypeBookingsTab,
+            this.colCustomerBookingsTab,
+            this.colRentedBookingsTab,
+            this.colReturnedBookingsTab});
             this.lvwBookings.Location = new System.Drawing.Point(15, 33);
             this.lvwBookings.Name = "lvwBookings";
             this.lvwBookings.Size = new System.Drawing.Size(631, 248);
             this.lvwBookings.TabIndex = 0;
             this.lvwBookings.UseCompatibleStateImageBehavior = false;
+            this.lvwBookings.View = System.Windows.Forms.View.Details;
             // 
             // tabAddData
             // 
@@ -428,6 +456,57 @@
             this.btnCloseForm.Text = "Close";
             this.btnCloseForm.UseVisualStyleBackColor = true;
             // 
+            // colRegNoReturnVehicle
+            // 
+            this.colRegNoReturnVehicle.Text = "Registration Number";
+            this.colRegNoReturnVehicle.Width = 120;
+            // 
+            // colTypeReturnVehicle
+            // 
+            this.colTypeReturnVehicle.Text = "Type";
+            // 
+            // colKmTariffReturnVehicle
+            // 
+            this.colKmTariffReturnVehicle.Text = "Km Tariff";
+            // 
+            // colDayTariffReturnVehicle
+            // 
+            this.colDayTariffReturnVehicle.Text = "Day Tariff";
+            // 
+            // colMeterReturnVehicle
+            // 
+            this.colMeterReturnVehicle.Text = "Meter";
+            // 
+            // colBookingIdBookingsTab
+            // 
+            this.colBookingIdBookingsTab.Text = "Booking Id";
+            this.colBookingIdBookingsTab.Width = 80;
+            // 
+            // colRegNoBookingsTab
+            // 
+            this.colRegNoBookingsTab.Text = "Reg. No.";
+            this.colRegNoBookingsTab.Width = 80;
+            // 
+            // colTypeBookingsTab
+            // 
+            this.colTypeBookingsTab.Text = "Type";
+            this.colTypeBookingsTab.Width = 80;
+            // 
+            // colCustomerBookingsTab
+            // 
+            this.colCustomerBookingsTab.Text = "Customer";
+            this.colCustomerBookingsTab.Width = 150;
+            // 
+            // colRentedBookingsTab
+            // 
+            this.colRentedBookingsTab.Text = "Rented Date";
+            this.colRentedBookingsTab.Width = 80;
+            // 
+            // colReturnedBookingsTab
+            // 
+            this.colReturnedBookingsTab.Text = "Returned Date";
+            this.colReturnedBookingsTab.Width = 100;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,6 +574,17 @@
         private System.Windows.Forms.ComboBox cboTypes;
         private System.Windows.Forms.TextBox txtMeter;
         private System.Windows.Forms.TextBox txtRegNo;
+        private System.Windows.Forms.ColumnHeader colRegNoReturnVehicle;
+        private System.Windows.Forms.ColumnHeader colTypeReturnVehicle;
+        private System.Windows.Forms.ColumnHeader colKmTariffReturnVehicle;
+        private System.Windows.Forms.ColumnHeader colDayTariffReturnVehicle;
+        private System.Windows.Forms.ColumnHeader colMeterReturnVehicle;
+        private System.Windows.Forms.ColumnHeader colBookingIdBookingsTab;
+        private System.Windows.Forms.ColumnHeader colRegNoBookingsTab;
+        private System.Windows.Forms.ColumnHeader colTypeBookingsTab;
+        private System.Windows.Forms.ColumnHeader colCustomerBookingsTab;
+        private System.Windows.Forms.ColumnHeader colRentedBookingsTab;
+        private System.Windows.Forms.ColumnHeader colReturnedBookingsTab;
     }
 }
 
