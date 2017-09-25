@@ -322,7 +322,8 @@ namespace Car_Rental
                 if (!added)
                     MessageBox.Show("The vehicle was not added");
                 //tabAddData.Update(tabRentVehicle);
-                tabControl1.SelectTab(3);
+                // tabBooking.SelectTab(tabRentVehicle); > listed in book like this but only works as written below.
+                tabControl1.SelectedTab = tabRentVehicle;
             }
             catch (Exception ex)
             {
