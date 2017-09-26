@@ -76,6 +76,24 @@ namespace Business_Layer.Classes
 
                 throw;
             };
+        } //End AddVehicle method
+
+        public void AddCustomer(ICustomer customer)
+        {
+            try
+            {
+                // Business logic to confirm that the customer does not yet exist.
+                if (customer.Id > 0) throw new CustomerException(customer.Id, "The customer has erroneous data.");
+                if (CustomerExist(customer.SocialSecurityNumber))
+                    throw new CustomerException(customer.Id,
+                        "The customer already exists.");
+                DataLayer.AddCustomer(customer);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         #endregion
@@ -171,6 +189,14 @@ namespace Business_Layer.Classes
 
         #region Helper Methods
 
+        public bool CustomerExist(string socialSecurityNumber)
+        {
+            var social = (from c in DataLayer.GetCustomers()
+                          where c.SocialSecurityNumber.Equals(
+                              socialSecurityNumber)
+                          select c).Count();
+            return social > 0;
+        }
 
         #endregion
     }

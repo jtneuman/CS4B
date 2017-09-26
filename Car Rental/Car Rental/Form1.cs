@@ -279,6 +279,11 @@ namespace Car_Rental
             }
         }
 
+        private void AddCustomer(ICustomer customer)
+        {
+
+        }
+
         #endregion
 
         #region Helper Methods
