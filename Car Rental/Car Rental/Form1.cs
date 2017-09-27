@@ -281,7 +281,52 @@ namespace Car_Rental
 
         private void AddCustomer(ICustomer customer)
         {
+            try
+            {
+                // Check for erroneous data
+                string errMsg = String.Empty;
+                if (txtSocialSecurityNumber.TextLength == 0)
+                    errMsg = "Invalid SSN" + Environment.NewLine;
 
+                if (txtFirstName.TextLength == 0)
+                    errMsg += "Incorrect first name" + Environment.NewLine;
+
+                if (txtLastName.TextLength == 0)
+                    errMsg += "Incorrect last name" + Environment.NewLine;
+
+                if (txtSocialSecurityNumber.TextLength == 0 ||
+                    txtFirstName.TextLength == 0 || 
+                    txtLastName.TextLength == 0)
+                {
+                    MessageBox.Show(errMsg);
+                    //return -1;
+                }
+                // Create the new customer object
+                Customer cust = new Customer()
+                {
+                    SocialSecurityNumber = txtSocialSecurityNumber.Text,
+                    FirstName = txtFirstName.Text,
+                    LastName = txtLastName.Text
+                };
+                // Add the new customer to the Customers collection and update the combo box
+                processor.AddCustomer(cust);
+                FillCustomers();
+
+                txtSocialSecurityNumber.Text = String.Empty;
+                txtFirstName.Text = String.Empty;
+                txtLastName.Text = String.Empty;
+
+                //return cboCustomers.Items.Count - 1;
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //return -1;
+            }
+
+                
+            
         }
 
         #endregion
@@ -336,6 +381,22 @@ namespace Car_Rental
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+            Customer added = AddCustomer(new Customer());
+            //var idx = AddCustomer();
+
+            //if (idx.Equals(Int32.MinValue)) return;
+            //if (idx.Equals(-1))
+            //{
+            //    MessageBox.Show("The customer was not added");
+            //    return;
+            //}
+
+            //cboCustomers.SelectedIndex = idx;
+            tabControl1.SelectedTab = tabRentVehicle;
         }
     }
 }

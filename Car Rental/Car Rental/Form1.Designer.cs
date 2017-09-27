@@ -46,9 +46,20 @@
             this.btnReturn = new System.Windows.Forms.Button();
             this.txtMeterReturn = new System.Windows.Forms.TextBox();
             this.lvwBookedVehicles = new System.Windows.Forms.ListView();
+            this.colRegNoReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colTypeReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colKmTariffReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colDayTariffReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colMeterReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabBookings = new System.Windows.Forms.TabPage();
             this.lblBookings = new System.Windows.Forms.Label();
             this.lvwBookings = new System.Windows.Forms.ListView();
+            this.colBookingIdBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colRegNoBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colTypeBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colCustomerBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colRentedBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colReturnedBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabAddData = new System.Windows.Forms.TabPage();
             this.gbxAddCustomer = new System.Windows.Forms.GroupBox();
             this.btnAddCustomer = new System.Windows.Forms.Button();
@@ -67,17 +78,6 @@
             this.txtMeter = new System.Windows.Forms.TextBox();
             this.txtRegNo = new System.Windows.Forms.TextBox();
             this.btnCloseForm = new System.Windows.Forms.Button();
-            this.colRegNoReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colTypeReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colKmTariffReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colDayTariffReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colMeterReturnVehicle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colBookingIdBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colRegNoBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colTypeBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colCustomerBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colRentedBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colReturnedBookingsTab = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabRentVehicle.SuspendLayout();
             this.tabReturnVehicle.SuspendLayout();
@@ -252,6 +252,27 @@
             this.lvwBookedVehicles.UseCompatibleStateImageBehavior = false;
             this.lvwBookedVehicles.View = System.Windows.Forms.View.Details;
             // 
+            // colRegNoReturnVehicle
+            // 
+            this.colRegNoReturnVehicle.Text = "Registration Number";
+            this.colRegNoReturnVehicle.Width = 120;
+            // 
+            // colTypeReturnVehicle
+            // 
+            this.colTypeReturnVehicle.Text = "Type";
+            // 
+            // colKmTariffReturnVehicle
+            // 
+            this.colKmTariffReturnVehicle.Text = "Km Tariff";
+            // 
+            // colDayTariffReturnVehicle
+            // 
+            this.colDayTariffReturnVehicle.Text = "Day Tariff";
+            // 
+            // colMeterReturnVehicle
+            // 
+            this.colMeterReturnVehicle.Text = "Meter";
+            // 
             // tabBookings
             // 
             this.tabBookings.Controls.Add(this.lblBookings);
@@ -288,6 +309,36 @@
             this.lvwBookings.UseCompatibleStateImageBehavior = false;
             this.lvwBookings.View = System.Windows.Forms.View.Details;
             // 
+            // colBookingIdBookingsTab
+            // 
+            this.colBookingIdBookingsTab.Text = "Booking Id";
+            this.colBookingIdBookingsTab.Width = 80;
+            // 
+            // colRegNoBookingsTab
+            // 
+            this.colRegNoBookingsTab.Text = "Reg. No.";
+            this.colRegNoBookingsTab.Width = 80;
+            // 
+            // colTypeBookingsTab
+            // 
+            this.colTypeBookingsTab.Text = "Type";
+            this.colTypeBookingsTab.Width = 80;
+            // 
+            // colCustomerBookingsTab
+            // 
+            this.colCustomerBookingsTab.Text = "Customer";
+            this.colCustomerBookingsTab.Width = 150;
+            // 
+            // colRentedBookingsTab
+            // 
+            this.colRentedBookingsTab.Text = "Rented Date";
+            this.colRentedBookingsTab.Width = 80;
+            // 
+            // colReturnedBookingsTab
+            // 
+            this.colReturnedBookingsTab.Text = "Returned Date";
+            this.colReturnedBookingsTab.Width = 100;
+            // 
             // tabAddData
             // 
             this.tabAddData.Controls.Add(this.gbxAddCustomer);
@@ -323,6 +374,7 @@
             this.btnAddCustomer.TabIndex = 6;
             this.btnAddCustomer.Text = "Add";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // lblLastName
             // 
@@ -455,57 +507,6 @@
             this.btnCloseForm.TabIndex = 2;
             this.btnCloseForm.Text = "Close";
             this.btnCloseForm.UseVisualStyleBackColor = true;
-            // 
-            // colRegNoReturnVehicle
-            // 
-            this.colRegNoReturnVehicle.Text = "Registration Number";
-            this.colRegNoReturnVehicle.Width = 120;
-            // 
-            // colTypeReturnVehicle
-            // 
-            this.colTypeReturnVehicle.Text = "Type";
-            // 
-            // colKmTariffReturnVehicle
-            // 
-            this.colKmTariffReturnVehicle.Text = "Km Tariff";
-            // 
-            // colDayTariffReturnVehicle
-            // 
-            this.colDayTariffReturnVehicle.Text = "Day Tariff";
-            // 
-            // colMeterReturnVehicle
-            // 
-            this.colMeterReturnVehicle.Text = "Meter";
-            // 
-            // colBookingIdBookingsTab
-            // 
-            this.colBookingIdBookingsTab.Text = "Booking Id";
-            this.colBookingIdBookingsTab.Width = 80;
-            // 
-            // colRegNoBookingsTab
-            // 
-            this.colRegNoBookingsTab.Text = "Reg. No.";
-            this.colRegNoBookingsTab.Width = 80;
-            // 
-            // colTypeBookingsTab
-            // 
-            this.colTypeBookingsTab.Text = "Type";
-            this.colTypeBookingsTab.Width = 80;
-            // 
-            // colCustomerBookingsTab
-            // 
-            this.colCustomerBookingsTab.Text = "Customer";
-            this.colCustomerBookingsTab.Width = 150;
-            // 
-            // colRentedBookingsTab
-            // 
-            this.colRentedBookingsTab.Text = "Rented Date";
-            this.colRentedBookingsTab.Width = 80;
-            // 
-            // colReturnedBookingsTab
-            // 
-            this.colReturnedBookingsTab.Text = "Returned Date";
-            this.colReturnedBookingsTab.Width = 100;
             // 
             // Form1
             // 
