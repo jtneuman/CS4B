@@ -81,6 +81,8 @@ namespace Car_Rental
 
         private bool FillBookings()
         {
+            bool returnValue = false;
+
             try
             {
                 var bookings =
@@ -104,13 +106,14 @@ namespace Car_Rental
                 lvwBookings.Items.Clear();
                 lvwBookings.Items.AddRange(bookings.ToArray());
 
-                return true;
+                returnValue = true;
             }
             catch (Exception)
             {
 
-                return false;
+                returnValue = false;
             }
+            return returnValue;
         }
 
         private void FillVehicleTypes()
@@ -155,19 +158,19 @@ namespace Car_Rental
 
         private bool RentVehicle()
         {
-            bool success = false;
+            bool returnValue = false;
             try
             {
                 if(cboCustomers.SelectedIndex < 0)
                 {
                     MessageBox.Show(
                         "A Customer must be selected in the drop down list");
-                    return success;
+                    return returnValue;
                 }
                 if(lvwAvailableVehicles.SelectedItems.Count == 0)
                 {
                     MessageBox.Show("A vehicle must be selected in the list");
-                    return success;
+                    return returnValue;
                 }
 
                 var vehicledId = Int32.Parse(
@@ -175,40 +178,42 @@ namespace Car_Rental
 
                 var customerId = ((ComboCustomer)cboCustomers.SelectedItem).Id;
 
-                success = processor.RentVehicle(vehicledId, customerId, DateTime.Now);
+                var ok = processor.RentVehicle(vehicledId, customerId, DateTime.Now);
                 FillAvailableVehicles();
                 FillBookedVehicles();
                 FillBookings();
+
+                returnValue = true;
             }
             catch 
             {
-                success = false;
+                returnValue = false;
             }
-            return success;
+            return returnValue;
         }// end RentVehicle method
 
         private bool ReturnVehicle()
         {
-            bool success = false;
+            bool returnValue = false;
 
             try
             {
                 if (!IsNumeric(txtMeterReturn.Text))
                 {
                     MessageBox.Show("The meter setting must be a number");
-                    return success;
+                    return returnValue;
                 }
                 if (lvwBookedVehicles.SelectedItems.Count == 0)
                 {
                     MessageBox.Show("A vehicle must be selected in the list");
-                    return success;
+                    return returnValue;
                 }
 
                 var vehicleId = Int32.Parse(
                     lvwBookedVehicles.SelectedItems[0].SubItems[5].Text);
 
                 var bookingId = processor.GetBooking(vehicleId).Id;
-                processor.ReturnVehicle(bookingId,
+                var ok = processor.ReturnVehicle(bookingId,
                     double.Parse(txtMeterReturn.Text), DateTime.Now);
 
                 FillAvailableVehicles();
@@ -217,18 +222,20 @@ namespace Car_Rental
 
                 txtMeterReturn.Text = String.Empty;
 
-                success = true;
+                returnValue = true;
             }
             catch (Exception)
             {
 
-                success = false;
+                returnValue = false;
             }
-            return success;
+            return returnValue;
         }
 
         private bool AddVehicle(IVehicle vehicle)
         {
+            bool returnValue = false;
+
             try
             {
                 //Check the controls for erroneous data
@@ -249,20 +256,21 @@ namespace Car_Rental
                 {
                     MessageBox.Show(errMsg);
                     // this is set as (return false;) in example but gives an comp error.
-                    return false;
+                    return returnValue;
                 }
                 // assign data to the vehicle object
                 var type = ((VehicleType)cboTypes.SelectedItem);
-                vehicle.Meter = Double.Parse(txtMeter.Text);
-                vehicle.RegistrationNumber = txtRegNo.Text;
-                vehicle.TypeId = type.Id;
-                vehicle.BasePricePerDay = type.BasePricePerDay;
-                vehicle.BasePricePerKm = type.BasePricePerKm;
-                vehicle.DayTariff = type.DayTariff;
-                vehicle.KmTariff = type.KmTariff;
-
+                var car = new Car() { 
+                Meter = Double.Parse(txtMeter.Text),
+                RegistrationNumber = txtRegNo.Text,
+                TypeId = type.Id,
+                BasePricePerDay = type.BasePricePerDay,
+                BasePricePerKm = type.BasePricePerKm,
+                DayTariff = type.DayTariff,
+                KmTariff = type.KmTariff
+            };
                 // Add the vehicle obj to the Vehicles collection
-                processor.AddVehicle(vehicle);
+                processor.AddVehicle(car);
 
                 // Update the vehicle list on the Rent Vehicles tab
                 FillAvailableVehicles();
@@ -270,17 +278,20 @@ namespace Car_Rental
                 txtRegNo.Text = String.Empty;
                 txtMeter.Text = String.Empty;
 
-                return true;
+                returnValue = true;
             }
             catch (Exception)
             {
 
-                return true;
+                returnValue = false;
             }
+            return returnValue;
         }
 
-        private void AddCustomer(ICustomer customer)
+        private int AddCustomer()
         {
+            int returnValue = -1;
+
             try
             {
                 // Check for erroneous data
@@ -300,16 +311,17 @@ namespace Car_Rental
                 {
                     MessageBox.Show(errMsg);
                     //return -1;
+                    return returnValue;
                 }
                 // Create the new customer object
-                Customer cust = new Customer()
+                var customer = new Customer()
                 {
                     SocialSecurityNumber = txtSocialSecurityNumber.Text,
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text
                 };
                 // Add the new customer to the Customers collection and update the combo box
-                processor.AddCustomer(cust);
+                processor.AddCustomer(customer);
                 FillCustomers();
 
                 txtSocialSecurityNumber.Text = String.Empty;
@@ -317,7 +329,8 @@ namespace Car_Rental
                 txtLastName.Text = String.Empty;
 
                 //return cboCustomers.Items.Count - 1;
-               
+                returnValue = cboCustomers.Items.Count - 1;
+
             }
             catch (Exception ex)
             {
@@ -325,7 +338,7 @@ namespace Car_Rental
                 //return -1;
             }
 
-                
+            return returnValue;  
             
         }
 
@@ -356,8 +369,6 @@ namespace Car_Rental
             if (!returned) MessageBox.Show("The vehicle was not returned");
         }
 
-        #endregion
-
         private void tabRentVehicle_Click(object sender, EventArgs e)
         {
 
@@ -385,8 +396,8 @@ namespace Car_Rental
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            Customer added = AddCustomer(new Customer());
-            //var idx = AddCustomer();
+            //Customer added = AddCustomer(new Customer());
+            var idx = AddCustomer();
 
             //if (idx.Equals(Int32.MinValue)) return;
             //if (idx.Equals(-1))
@@ -394,9 +405,19 @@ namespace Car_Rental
             //    MessageBox.Show("The customer was not added");
             //    return;
             //}
+            if (idx == -1)
+            {
+                MessageBox.Show("The customer was not added");
+                return;
+            }
 
             //cboCustomers.SelectedIndex = idx;
+            cboCustomers.SelectedIndex = idx;
             tabControl1.SelectedTab = tabRentVehicle;
         }
+
+        #endregion
+
+
     }
 }
