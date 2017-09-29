@@ -15,7 +15,7 @@ namespace ReadandWrite.Classes
 
     class IO
     {
-        static bool WriteToFile(string path, DataFormat dataFormat, object data)
+        public static bool WriteToFile(string path, DataFormat dataFormat, object data)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace ReadandWrite.Classes
             }
         }// end WriteToFile method
 
-        static bool ReadFile(string path, DataFormat dataFormat, out object data)
+        public static bool ReadFile(string path, DataFormat dataFormat, out object data)
         {
             data = null;
 
