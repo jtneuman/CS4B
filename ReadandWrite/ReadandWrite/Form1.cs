@@ -46,6 +46,10 @@ namespace ReadandWrite
             if (rbnBinary.Checked)
             {
                 success = IO.ReadFile(@"C:\Test\binary.bin", DataFormat.Binary, out object binaryData);
+
+                if (success)
+                    foreach (byte data in binaryData as byte[])
+                        txtMessage.Text += data + ", ";
             }
             else if (rbnText.Checked)
             {
