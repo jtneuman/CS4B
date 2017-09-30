@@ -21,8 +21,30 @@ namespace ReadandWrite.Classes
             {
                 var file = new FileStream(path, FileMode.Create, FileAccess.Write);
 
-                if (dataFormat.Equals(DataFormat.Binary)) { }
-                else if (dataFormat.Equals(DataFormat.Text)) { }
+                if (dataFormat.Equals(DataFormat.Binary)) {
+                    #region Binary Writer
+
+                    var writer = new BinaryWriter(file);
+
+                    foreach (byte b in data as byte[])
+                    {
+                        writer.Write(b);
+                        writer.Close();
+                        file.Close();
+                    }
+
+                    #endregion
+                }
+                else if (dataFormat.Equals(DataFormat.Text)) {
+                    #region Stream Writer
+
+                    StreamWriter writer = new StreamWriter(file);
+                    writer.WriteLine(data);
+                    writer.Close();
+                    file.Close();
+
+                    #endregion
+                }
 
                 return true;
             }
@@ -41,8 +63,33 @@ namespace ReadandWrite.Classes
             {
                 var file = new FileStream(path, FileMode.Open,
                     FileAccess.Read);
-                if (dataFormat.Equals(DataFormat.Binary)) { }
-                else if (dataFormat.Equals(DataFormat.Text)) { }
+                if (dataFormat.Equals(DataFormat.Binary)) {
+                    #region Binary Reader
+
+                    var reader = new BinaryReader(file);
+                    int length = (int)reader.BaseStream.Length;
+
+                    //read all data into an array
+                    byte[] binaryData = new byte[length];
+                    reader.Read(binaryData, 0, length);
+
+                    reader.Close();
+                    file.Close();
+
+                    data = binaryData;
+
+                    #endregion
+                }
+                else if (dataFormat.Equals(DataFormat.Text)) {
+                    #region Stream Reader
+
+                    StreamReader reader = new StreamReader(file);
+                    data = reader.ReadToEnd();
+                    reader.Close();
+                    file.Close();
+
+                    #endregion
+                }
 
 
                 return true;
