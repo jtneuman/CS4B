@@ -21,7 +21,7 @@ namespace ReadandWrite
         private void BtnSave_Click(object sender, EventArgs e)
         {
             var success = false;
-            txtMessage.Clear();
+
 
             if (rbnBinary.Checked)
             {
@@ -30,11 +30,13 @@ namespace ReadandWrite
             }
             else if (rbnText.Checked)
             {
-                success = IO.WriteToFile(@"C:\Test\text.txt", DataFormat.Text, txtMessage.Text); 
+                string txtMessage = "1, 2, 4, 8, 16, 32, 64, 128";
+                success = IO.WriteToFile(@"C:\Test\text.txt", DataFormat.Text, txtMessage); 
             }
 
             if (!success) MessageBox.Show("Could not write to the file!");
-            
+            txtMessage.Clear();
+
 
         }
 
