@@ -29,9 +29,9 @@ namespace ReadandWrite.Classes
                     foreach (byte b in data as byte[])
                     {
                         writer.Write(b);
-                        writer.Close();
-                        file.Close();
                     }
+                    writer.Close();
+                    file.Close();
 
                     #endregion
                 }
@@ -48,9 +48,8 @@ namespace ReadandWrite.Classes
 
                 return true;
             }
-            catch (Exception)
+            catch
             {
-
                 return false;
             }
         }// end WriteToFile method
@@ -94,9 +93,8 @@ namespace ReadandWrite.Classes
 
                 return true;
             }
-            catch (Exception)
+            catch
             {
-
                 return false;
             }
         }
