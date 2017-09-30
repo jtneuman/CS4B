@@ -18,9 +18,10 @@ namespace ReadandWrite
             InitializeComponent();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             var success = false;
+            txtMessage.Clear();
 
             if (rbnBinary.Checked)
             {
@@ -33,24 +34,22 @@ namespace ReadandWrite
             }
 
             if (!success) MessageBox.Show("Could not write to the file!");
-            txtMessage.Clear();
+            
 
         }
 
-        private void btnRead_Click(object sender, EventArgs e)
+        private void BtnRead_Click(object sender, EventArgs e)
         {
             var success = false;
             txtMessage.Clear();
 
             if (rbnBinary.Checked)
             {
-                object binaryData;
-                success = IO.ReadFile(@"C:\Test\binary.bin", DataFormat.Binary, out binaryData);
+                success = IO.ReadFile(@"C:\Test\binary.bin", DataFormat.Binary, out object binaryData);
             }
             else if (rbnText.Checked)
             {
-                object text;
-                success = IO.ReadFile(@"C:\Test\text.txt", DataFormat.Text, out text);
+                success = IO.ReadFile(@"C:\Test\text.txt", DataFormat.Text, out object text);
                 if (success) txtMessage.Text = text.ToString();
             }
 
