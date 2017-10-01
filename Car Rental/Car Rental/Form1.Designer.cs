@@ -78,6 +78,7 @@
             this.txtMeter = new System.Windows.Forms.TextBox();
             this.txtRegNo = new System.Windows.Forms.TextBox();
             this.btnCloseForm = new System.Windows.Forms.Button();
+            this.BtnSave = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabRentVehicle.SuspendLayout();
             this.tabReturnVehicle.SuspendLayout();
@@ -137,6 +138,7 @@
             // 
             // tabRentVehicle
             // 
+            this.tabRentVehicle.Controls.Add(this.BtnSave);
             this.tabRentVehicle.Controls.Add(this.btnRent);
             this.tabRentVehicle.Controls.Add(this.lblCustomers);
             this.tabRentVehicle.Controls.Add(this.cboCustomers);
@@ -153,9 +155,9 @@
             // 
             // btnRent
             // 
-            this.btnRent.Location = new System.Drawing.Point(545, 75);
+            this.btnRent.Location = new System.Drawing.Point(461, 75);
             this.btnRent.Name = "btnRent";
-            this.btnRent.Size = new System.Drawing.Size(75, 23);
+            this.btnRent.Size = new System.Drawing.Size(159, 33);
             this.btnRent.TabIndex = 4;
             this.btnRent.Text = "Rent";
             this.btnRent.UseVisualStyleBackColor = true;
@@ -508,6 +510,16 @@
             this.btnCloseForm.Text = "Close";
             this.btnCloseForm.UseVisualStyleBackColor = true;
             // 
+            // BtnSave
+            // 
+            this.BtnSave.Location = new System.Drawing.Point(461, 124);
+            this.BtnSave.Name = "BtnSave";
+            this.BtnSave.Size = new System.Drawing.Size(158, 33);
+            this.BtnSave.TabIndex = 5;
+            this.BtnSave.Text = "Save";
+            this.BtnSave.UseVisualStyleBackColor = true;
+            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -586,6 +598,7 @@
         private System.Windows.Forms.ColumnHeader colCustomerBookingsTab;
         private System.Windows.Forms.ColumnHeader colRentedBookingsTab;
         private System.Windows.Forms.ColumnHeader colReturnedBookingsTab;
+        private System.Windows.Forms.Button BtnSave;
     }
 }
 

@@ -416,6 +416,15 @@ namespace Car_Rental
             tabControl1.SelectedTab = tabRentVehicle;
         }
 
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            var success = IO.WriteToFile(@"C:\Test\Customers.txt", processor.GetCustomers());
+            if (success)
+                MessageBox.Show("Customers were saved to file");
+            else
+                MessageBox.Show("Customers could not be saved at this time.");
+        }
+
         #endregion
 
 

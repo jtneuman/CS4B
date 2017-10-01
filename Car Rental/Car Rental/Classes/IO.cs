@@ -19,10 +19,10 @@ namespace Car_Rental.Classes
                 foreach (var customer in customers)
                 {
                     writer.WriteLine(String.Format("{0}\t{1}\t{2}\t{3}", customer.Id, customer.SocialSecurityNumber, customer.LastName, customer.FirstName));
-
-                    writer.Close();
-                    file.Close();
                 }
+
+                writer.Close();
+                file.Close();
                 return true;
             }
             catch
