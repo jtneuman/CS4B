@@ -8,6 +8,8 @@ using Data_Layer.Data_Source;
 using Data_Layer.Enums;
 using Data_Layer.Entities;
 using Data_Layer.Exceptions;
+using System.IO;
+using System.Web.Script.Serialization;
 
 namespace Data_Layer.Data_Layers
 {
@@ -21,7 +23,18 @@ namespace Data_Layer.Data_Layers
 
         #region Serialize/Deserialize
 
-
+        public void Serialize(string path)
+        {
+            /* requires ref to System.Web.Extensions assemb*/
+            File.WriteAllText(path + @"Bookings.txt",
+                new JavaScriptSerializer().Serialize(TestData.Bookings));
+            File.WriteAllText(path + @"Customers.txt",
+                new JavaScriptSerializer().Serialize(TestData.Customers));
+            File.WriteAllText(path + @"Vehicles.txt",
+                new JavaScriptSerializer().Serialize(TestData.Vehicles));
+            File.WriteAllText(path + @"VehicleTypes.txt",
+                new JavaScriptSerializer().Serialize(TestData.VehicleTypes));
+        }
 
         #endregion
 

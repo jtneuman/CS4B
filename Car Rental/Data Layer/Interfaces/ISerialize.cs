@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Data_Layer.Interfaces
 {
-    interface ISerialize
+    public interface ISerialize
     {
+        void Serialize(string path);
     }
 }

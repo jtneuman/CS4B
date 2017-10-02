@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data_Layer.Interfaces
 {
-    public interface IDataLayer : IRentalBase
+    public interface IDataLayer : IRentalBase, ISerialize
     {
         #region Helper Methods
 
