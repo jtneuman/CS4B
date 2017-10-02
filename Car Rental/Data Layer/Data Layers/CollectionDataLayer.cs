@@ -19,6 +19,11 @@ namespace Data_Layer.Data_Layers
             new TestData().Seed();
         }
 
+        #region Serialize/Deserialize
+
+
+
+        #endregion
 
         #region Action Methods
 

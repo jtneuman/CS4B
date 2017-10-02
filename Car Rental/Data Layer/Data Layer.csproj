@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,6 +57,7 @@
     <Compile Include="Interfaces\ICustomer.cs" />
     <Compile Include="Interfaces\IDataLayer.cs" />
     <Compile Include="Interfaces\IRentalBase.cs" />
+    <Compile Include="Interfaces\ISerialize.cs" />
     <Compile Include="Interfaces\IVehicle.cs" />
     <Compile Include="Interfaces\IVehicleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
