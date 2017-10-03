@@ -42,6 +42,24 @@ namespace Data_Layer.Data_Layers
             return new JavaScriptSerializer().Deserialize<List<Booking>>(json);
         }
 
+        private List<Customer> DeserializeCustomers(string path)
+        {
+            string json = File.ReadAllText(path);
+            return new JavaScriptSerializer().Deserialize<List<Customer>>(json);
+        }
+
+        private List<Vehicle> DeserializeVehicles(string path)
+        {
+            string json = File.ReadAllText(path);
+            return new JavaScriptSerializer().Deserialize<List<Vehicle>>(json);
+        }
+
+        private List<VehicleType> DeserializeVehicleTypes(string path)
+        {
+            string json = File.ReadAllText(path);
+            return new JavaScriptSerializer().Deserialize<List<VehicleType>>(json);
+        }
+
         #endregion
 
         #region Action Methods
