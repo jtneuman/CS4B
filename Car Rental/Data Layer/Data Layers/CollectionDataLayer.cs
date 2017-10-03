@@ -34,6 +34,12 @@ namespace Data_Layer.Data_Layers
                 new JavaScriptSerializer().Serialize(TestData.Vehicles));
             File.WriteAllText(path + @"VehicleTypes.txt",
                 new JavaScriptSerializer().Serialize(TestData.VehicleTypes));
+        }// end Serialize method
+
+        private List<Booking> DeserializeBookings(string path)
+        {
+            string json = File.ReadAllText(path);
+            return new JavaScriptSerializer().Deserialize<List<Booking>>(json);
         }
 
         #endregion
