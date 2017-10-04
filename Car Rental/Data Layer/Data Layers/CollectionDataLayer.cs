@@ -60,6 +60,16 @@ namespace Data_Layer.Data_Layers
             return new JavaScriptSerializer().Deserialize<List<VehicleType>>(json);
         }
 
+        private void Seed(string path)
+        {
+            TestData.Bookings = DeserializeBookings(path + @"Bookings.txt").Cast<IBooking>().ToList();
+            TestData.Customers = DeserializeCustomers(path + @"Customers.txt").Cast<ICustomer>().ToList();
+            TestData.Vehicles = DeserializeVehicles(path + @"Vehicles.txt").Cast<IVehicle>().ToList();
+            TestData.VehicleTypes = DeserializeVehicleTypes(path + @"VehicleTypes.txt").Cast<IVehicleType>().ToList();
+        }
+
+
+
         #endregion
 
         #region Action Methods
