@@ -18,7 +18,8 @@ namespace Data_Layer.Data_Layers
 
         public CollectionDataLayer()
         {
-            new TestData().Seed();
+            //new TestData().Seed();
+            Seed(@"C:\Test\");
         }
 
         #region Serialize/Deserialize

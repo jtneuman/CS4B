@@ -425,8 +425,12 @@ namespace Car_Rental
                 MessageBox.Show("Customers could not be saved at this time.");
         }
 
+
         #endregion
 
-
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            processor.DataLayer.Serialize(@"C:\Test\");
+        }
     }
 }

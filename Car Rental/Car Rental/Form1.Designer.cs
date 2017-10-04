@@ -36,6 +36,7 @@
             this.colMeter = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabRentVehicle = new System.Windows.Forms.TabPage();
+            this.BtnSave = new System.Windows.Forms.Button();
             this.btnRent = new System.Windows.Forms.Button();
             this.lblCustomers = new System.Windows.Forms.Label();
             this.cboCustomers = new System.Windows.Forms.ComboBox();
@@ -78,7 +79,6 @@
             this.txtMeter = new System.Windows.Forms.TextBox();
             this.txtRegNo = new System.Windows.Forms.TextBox();
             this.btnCloseForm = new System.Windows.Forms.Button();
-            this.BtnSave = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabRentVehicle.SuspendLayout();
             this.tabReturnVehicle.SuspendLayout();
@@ -152,6 +152,16 @@
             this.tabRentVehicle.Text = "Rent Vehicle";
             this.tabRentVehicle.UseVisualStyleBackColor = true;
             this.tabRentVehicle.Click += new System.EventHandler(this.tabRentVehicle_Click);
+            // 
+            // BtnSave
+            // 
+            this.BtnSave.Location = new System.Drawing.Point(461, 124);
+            this.BtnSave.Name = "BtnSave";
+            this.BtnSave.Size = new System.Drawing.Size(158, 33);
+            this.BtnSave.TabIndex = 5;
+            this.BtnSave.Text = "Save";
+            this.BtnSave.UseVisualStyleBackColor = true;
+            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // btnRent
             // 
@@ -510,16 +520,6 @@
             this.btnCloseForm.Text = "Close";
             this.btnCloseForm.UseVisualStyleBackColor = true;
             // 
-            // BtnSave
-            // 
-            this.BtnSave.Location = new System.Drawing.Point(461, 124);
-            this.BtnSave.Name = "BtnSave";
-            this.BtnSave.Size = new System.Drawing.Size(158, 33);
-            this.BtnSave.TabIndex = 5;
-            this.BtnSave.Text = "Save";
-            this.BtnSave.UseVisualStyleBackColor = true;
-            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -529,6 +529,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabRentVehicle.ResumeLayout(false);
