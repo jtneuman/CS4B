@@ -45,6 +45,7 @@
     <Compile Include="Classes\BusinessRule.cs" />
     <Compile Include="Interfaces\IBookingProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RuleComparer.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
