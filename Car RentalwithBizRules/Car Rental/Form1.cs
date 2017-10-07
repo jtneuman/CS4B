@@ -356,6 +356,26 @@ namespace Car_Rental
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text
                 };
+
+                var rules = new List<BusinessRule<ICustomer>>()
+                {
+                    new BusinessRule<ICustomer>
+                    {
+                        Property = "Id",
+                        Value = 1,
+                        Comparer = RuleOperator.LessThan
+                    },
+                                        new BusinessRule<ICustomer>
+                    {
+                        Property = "SocialSecurityNumber",
+                        Items = processor.GetCustomers(),
+                        Comparer = RuleOperator.NotContains
+                    }
+                };
+                //Testing biz rules
+                //var success = new RuleComparer()
+                //    .EvaluateRules(customer, rules);
+
                 // Add the new customer to the Customers collection and update the combo box
                 processor.AddCustomer(customer);
                 FillCustomers();
@@ -376,7 +396,7 @@ namespace Car_Rental
 
             return returnValue;  
             
-        }
+        }// end AddCustomer method.
 
         #endregion
 
