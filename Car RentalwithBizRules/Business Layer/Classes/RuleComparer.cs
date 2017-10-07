@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Business_Layer.Interfaces;
 using Business_Layer.Classes;
 
 namespace Business_Layer
 {
-    class RuleComparer : IComparer
+    // class must be public when evaluating the biz rules
+    public class RuleComparer : IComparer
     {
         public int Compare(object value1, object value2)
         {

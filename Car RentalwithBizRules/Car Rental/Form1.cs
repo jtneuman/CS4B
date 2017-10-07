@@ -15,6 +15,7 @@ using Data_Layer.Enums;
 using Data_Layer.Interfaces;
 using Car_Rental.Classes;
 using System.Text.RegularExpressions;
+using Business_Layer;
 
 namespace Car_Rental
 {
@@ -269,8 +270,43 @@ namespace Car_Rental
                 DayTariff = type.DayTariff,
                 KmTariff = type.KmTariff
             };
+                // Adding business rules
+                var rules = new List<BusinessRule<IVehicle>>()
+                {
+                    new BusinessRule<IVehicle>
+                    {
+                        Property = "Id",
+                        Value = 1,
+                        Comparer = RuleOperator.LessThan
+                    },
+                    new BusinessRule<IVehicle>
+                    {
+                        Property = "Meter",
+                        Value = -1,
+                        Comparer = RuleOperator.GreaterThan
+                    },
+                    new BusinessRule<IVehicle>
+                    {
+                        Property = "RegistrationNumber",
+                        Value = String.Empty,
+                        Comparer = RuleOperator.NotEqual
+                    },
+                    new BusinessRule<IVehicle>
+                    {
+                        Property = "TypeId",
+                        Value = 0,
+                        Comparer = RuleOperator.GreaterThan
+                    }
+                };
+
+                // Test - page 637 in kindle
+    //            var success = new RuleComparer()
+    //.EvaluateRules(car, rules);
+
                 // Add the vehicle obj to the Vehicles collection
                 processor.AddVehicle(car);
+
+
 
                 // Update the vehicle list on the Rent Vehicles tab
                 FillAvailableVehicles();
