@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\GenericProcessor.cs" />
     <Compile Include="Classes\BookingProcessor.cs" />
     <Compile Include="Classes\BusinessRule.cs" />
+    <Compile Include="Interfaces\IGenericProcessor.cs" />
     <Compile Include="Interfaces\IBookingProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\RuleComparer.cs" />
