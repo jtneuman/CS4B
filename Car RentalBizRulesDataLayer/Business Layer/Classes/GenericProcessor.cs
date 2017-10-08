@@ -199,5 +199,14 @@ namespace Business_Layer.Classes
         }
 
         #endregion
+
+        #region Generic Methods
+
+        public IEnumerable<T> Get<T>()
+        {
+            return DataLayer.Get<T>();
+        }
+
+        #endregion
     }
 }

@@ -30,6 +30,12 @@ namespace Data_Layer.Interfaces
         IEnumerable<IVehicleType> GetVehicleTypes();
         IVehicleType GetVehicleType(int vehicleTypeId);
 
+        #region Generic methods
+
+        IEnumerable<T> Get<T>();
+
+        #endregion
+
         #endregion
     }
 }

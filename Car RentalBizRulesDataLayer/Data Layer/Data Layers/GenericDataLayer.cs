@@ -234,14 +234,16 @@ namespace Data_Layer.Data_Layers
             return vehicle.BasePricePerDay * duration * vehicle.DayTariff + vehicle.BasePricePerKm * (returnedMeterSetting - vehicle.Meter) * vehicle.KmTariff;
         }
 
-
-
-
-
-
         #endregion
 
+        #region Generic Methods
 
+        public IEnumerable<T> Get<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
 
     }
 }
