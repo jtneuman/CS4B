@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data Layers\GenericDataLayer.cs" />
     <Compile Include="Data Layers\CollectionDataLayer.cs" />
     <Compile Include="Data Source\TestData.cs" />
     <Compile Include="Entities\Booking.cs" />
@@ -55,7 +56,9 @@
     <Compile Include="Exceptions\VehicleException.cs" />
     <Compile Include="Interfaces\IBooking.cs" />
     <Compile Include="Interfaces\ICustomer.cs" />
+    <Compile Include="Interfaces\IGenericDataLayer.cs" />
     <Compile Include="Interfaces\IDataLayer.cs" />
+    <Compile Include="Interfaces\IGenericBase.cs" />
     <Compile Include="Interfaces\IRentalBase.cs" />
     <Compile Include="Interfaces\ISerialize.cs" />
     <Compile Include="Interfaces\IVehicle.cs" />

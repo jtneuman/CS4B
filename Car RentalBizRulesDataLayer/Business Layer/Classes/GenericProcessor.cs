@@ -10,17 +10,17 @@ using Data_Layer.Interfaces;
 
 namespace Business_Layer.Classes
 {
-    public class BookingProcessor : IBookingProcessor
+    public class GenericProcessor : IGenericProcessor
     {
         #region Properties
 
-        public IDataLayer DataLayer { get; private set; }
+        public IGenericDataLayer DataLayer { get; private set; }
 
         #endregion
 
         #region Constructor
 
-        public BookingProcessor(IDataLayer dataLayer)
+        public GenericProcessor(IGenericDataLayer dataLayer)
         {
             DataLayer = dataLayer;
         }

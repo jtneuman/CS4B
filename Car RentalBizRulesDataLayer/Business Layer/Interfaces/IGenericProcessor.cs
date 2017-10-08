@@ -7,9 +7,9 @@ using Data_Layer.Interfaces;
 
 namespace Business_Layer.Interfaces
 {
-    public interface IBookingProcessor : IRentalBase
+    public interface IGenericProcessor : IGenericBase
     {
-        IDataLayer DataLayer { get; }
+        IGenericDataLayer DataLayer { get; }
 
         IBooking GetBooking(int vehicleId);
         bool CustomerExist(string socialSecurityNumber);
