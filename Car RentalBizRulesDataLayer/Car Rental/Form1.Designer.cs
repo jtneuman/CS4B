@@ -151,7 +151,7 @@
             this.tabRentVehicle.TabIndex = 0;
             this.tabRentVehicle.Text = "Rent Vehicle";
             this.tabRentVehicle.UseVisualStyleBackColor = true;
-            this.tabRentVehicle.Click += new System.EventHandler(this.tabRentVehicle_Click);
+            this.tabRentVehicle.Click += new System.EventHandler(this.TabRentVehicle_Click);
             // 
             // BtnSave
             // 
@@ -171,7 +171,7 @@
             this.btnRent.TabIndex = 4;
             this.btnRent.Text = "Rent";
             this.btnRent.UseVisualStyleBackColor = true;
-            this.btnRent.Click += new System.EventHandler(this.btnRent_Click);
+            this.btnRent.Click += new System.EventHandler(this.BtnRent_Click);
             // 
             // lblCustomers
             // 
@@ -240,7 +240,7 @@
             this.btnReturn.TabIndex = 2;
             this.btnReturn.Text = "Return";
             this.btnReturn.UseVisualStyleBackColor = true;
-            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            this.btnReturn.Click += new System.EventHandler(this.BtnReturn_Click);
             // 
             // txtMeterReturn
             // 
@@ -386,7 +386,7 @@
             this.btnAddCustomer.TabIndex = 6;
             this.btnAddCustomer.Text = "Add";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
-            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
+            this.btnAddCustomer.Click += new System.EventHandler(this.BtnAddCustomer_Click);
             // 
             // lblLastName
             // 
@@ -460,7 +460,7 @@
             this.btnAddVehicle.TabIndex = 6;
             this.btnAddVehicle.Text = "Add";
             this.btnAddVehicle.UseVisualStyleBackColor = true;
-            this.btnAddVehicle.Click += new System.EventHandler(this.btnAddVehicle_Click);
+            this.btnAddVehicle.Click += new System.EventHandler(this.BtnAddVehicle_Click);
             // 
             // lblType
             // 

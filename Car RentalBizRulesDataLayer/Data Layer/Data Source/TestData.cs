@@ -8,7 +8,7 @@ using Data_Layer.Entities;
 
 namespace Data_Layer.Data_Source
 {
-    class TestData
+    public class TestData
     {
         #region Collections
 

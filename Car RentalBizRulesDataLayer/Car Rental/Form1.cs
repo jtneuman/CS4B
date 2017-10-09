@@ -413,24 +413,24 @@ namespace Car_Rental
 
         #region Button Events
 
-        private void btnRent_Click(object sender, EventArgs e)
+        private void BtnRent_Click(object sender, EventArgs e)
         {
             var rented = RentVehicle();
         }
 
-        private void btnReturn_Click(object sender, EventArgs e)
+        private void BtnReturn_Click(object sender, EventArgs e)
         {
             var returned = ReturnVehicle();
 
             if (!returned) MessageBox.Show("The vehicle was not returned");
         }
 
-        private void tabRentVehicle_Click(object sender, EventArgs e)
+        private void TabRentVehicle_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnAddVehicle_Click(object sender, EventArgs e)
+        private void BtnAddVehicle_Click(object sender, EventArgs e)
         {
             try
             {
@@ -450,7 +450,7 @@ namespace Car_Rental
 
         }
 
-        private void btnAddCustomer_Click(object sender, EventArgs e)
+        private void BtnAddCustomer_Click(object sender, EventArgs e)
         {
             //Customer added = AddCustomer(new Customer());
             var idx = AddCustomer();
