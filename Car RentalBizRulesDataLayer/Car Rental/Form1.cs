@@ -21,8 +21,8 @@ namespace Car_Rental
 {
     public partial class Form1 : Form
     {
-
-        IBookingProcessor processor;
+        // was IBookingProcess prior to generic refactoring
+        IGenericProcessor processor;
 
         public Form1()
         {
@@ -31,7 +31,7 @@ namespace Car_Rental
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            processor = new BookingProcessor(new CollectionDataLayer());
+            processor = new GenericProcessor(new GenericDataLayer());
 
             FillCustomers();
             FillAvailableVehicles();
@@ -47,7 +47,7 @@ namespace Car_Rental
         {
             try
             {
-                var customer = from c in processor.GetCustomers()
+                var customer = from c in processor.Get<ICustomer>()
                                select new ComboCustomer
                                {
                                    Name = String.Format("{0} {1} {2}",
@@ -87,8 +87,8 @@ namespace Car_Rental
             try
             {
                 var bookings =
-                    from b in processor.GetBookings()
-                    join c in processor.GetCustomers()
+                    from b in processor.Get<IBooking>()
+                    join c in processor.Get<ICustomer>()
                         on b.CustomerId equals c.Id
                     join car in processor.GetVehicles(VehicleStatus.All)
                         on b.VehicleId equals car.Id
@@ -121,7 +121,7 @@ namespace Car_Rental
         {
             try
             {
-                cboTypes.DataSource = processor.GetVehicleTypes();
+                cboTypes.DataSource = processor.Get<IVehicleType>();
                 cboTypes.DisplayMember = "Name";
             }
             catch (Exception)
@@ -368,7 +368,7 @@ namespace Car_Rental
                                         new BusinessRule<ICustomer>
                     {
                         Property = "SocialSecurityNumber",
-                        Items = processor.GetCustomers(),
+                        Items = processor.Get<ICustomer>(),
                         Comparer = RuleOperator.NotContains
                     }
                 };
@@ -474,7 +474,7 @@ namespace Car_Rental
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            var success = IO.WriteToFile(@"C:\Test\Customers.txt", processor.GetCustomers());
+            var success = IO.WriteToFile(@"C:\Test\Customers.txt", processor.Get<ICustomer>());
             if (success)
                 MessageBox.Show("Customers were saved to file");
             else
