@@ -240,7 +240,17 @@ namespace Data_Layer.Data_Layers
 
         public IEnumerable<T> Get<T>()
         {
-            throw new NotImplementedException();
+            var type = typeof(T);
+            var testDataObj = new TestData();
+            var testDataType = testDataObj.GetType();
+
+            var collectionField = testDataType.GetFields().FirstOrDefault(f =>
+                f.FieldType.GetGenericArguments().First().Name.Equals(type.Name));
+
+            var collection = (IEnumerable<T>)collectionField.GetValue(testDataObj);
+
+            return collection;
+
         }
 
         #endregion
