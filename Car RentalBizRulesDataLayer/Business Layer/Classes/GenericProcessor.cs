@@ -157,7 +157,7 @@ namespace Business_Layer.Classes
         {
             try
             {
-                return (from b in DataLayer.GetBookings()
+                return (from b in DataLayer.Get<IBooking>()
                         where b.VehicleId.Equals(vehicleId) &&
                               b.Returned.Equals(DateTime.MinValue)
                         select b).FirstOrDefault();
@@ -191,7 +191,7 @@ namespace Business_Layer.Classes
 
         public bool CustomerExist(string socialSecurityNumber)
         {
-            var social = (from c in DataLayer.GetCustomers()
+            var social = (from c in DataLayer.Get<ICustomer>()
                           where c.SocialSecurityNumber.Equals(
                               socialSecurityNumber)
                           select c).Count();

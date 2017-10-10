@@ -18,8 +18,8 @@ namespace Data_Layer.Data_Layers
 
         public GenericDataLayer()
         {
-            //new TestData().Seed();
-            Seed(@"C:\Test\");
+            new TestData().Seed();
+            //Seed(@"C:\Test\");
         }
 
         #region Serialize/Deserialize
