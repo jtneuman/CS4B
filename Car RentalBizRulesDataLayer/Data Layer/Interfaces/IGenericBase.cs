@@ -24,10 +24,10 @@ namespace Data_Layer.Interfaces
 
         #region Fetch Methods
 
-        IEnumerable<ICustomer> GetCustomers();
-        IEnumerable<IBooking> GetBookings();
+        //IEnumerable<ICustomer> GetCustomers();
+        //IEnumerable<IBooking> GetBookings();
         IEnumerable<IVehicle> GetVehicles(VehicleStatus status);
-        IEnumerable<IVehicleType> GetVehicleTypes();
+        //IEnumerable<IVehicleType> GetVehicleTypes();
         IVehicleType GetVehicleType(int vehicleTypeId);
 
         #region Generic methods

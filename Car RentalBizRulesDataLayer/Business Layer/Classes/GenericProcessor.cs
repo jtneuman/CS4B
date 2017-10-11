@@ -100,19 +100,19 @@ namespace Business_Layer.Classes
 
         #region Fetch Methods
 
-        public IEnumerable<ICustomer> GetCustomers()
-        {
-            try
-            {
-                return DataLayer.GetCustomers();
-            }
-            catch (Exception)
-            {
+        //public IEnumerable<ICustomer> GetCustomers()
+        //{
+        //    try
+        //    {
+        //        return DataLayer.GetCustomers();
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
+        //        throw;
+        //    }
 
-        }
+        //}
 
         public IEnumerable<IVehicle> GetVehicles(VehicleStatus status)
         {
@@ -140,18 +140,18 @@ namespace Business_Layer.Classes
             };
         }
 
-        public IEnumerable<IBooking> GetBookings()
-        {
-            try
-            {
-                return DataLayer.GetBookings();
-            }
-            catch (Exception)
-            {
+        //public IEnumerable<IBooking> GetBookings()
+        //{
+        //    try
+        //    {
+        //        return DataLayer.GetBookings();
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            };
-        }
+        //        throw;
+        //    };
+        //}
 
         public IBooking GetBooking(int vehicleId)
         {
@@ -169,18 +169,18 @@ namespace Business_Layer.Classes
             };
         }
 
-        public IEnumerable<IVehicleType> GetVehicleTypes()
-        {
-            try
-            {
-                return DataLayer.GetVehicleTypes();
-            }
-            catch (Exception)
-            {
+        //public IEnumerable<IVehicleType> GetVehicleTypes()
+        //{
+        //    try
+        //    {
+        //        return DataLayer.GetVehicleTypes();
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
 
 
 

@@ -43,7 +43,7 @@ namespace Data_Layer.Data_Source
                 DayTariff = 1.3,
                 KmTariff = 1
             });
-            VehicleTypes.Add(new VehicleType()
+           VehicleTypes.Add(new VehicleType()
             {
                 Id = 3,
                 Name = "Van",
