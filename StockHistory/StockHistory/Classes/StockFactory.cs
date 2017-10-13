@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,32 @@ namespace StockHistory.Classes
             TaskScheduler.UnobservedTaskException += new EventHandler<UnobservedTaskExceptionEventArgs>(
                 TaskUnobservedException_Handler);
         }
+        #endregion
+
+        #region Methods
+        // Note example code used "Response" as paramenter name?
+        private static List<decimal> ParsePrices(WebResponse response,
+            char[] separators, int dataIndex)
+        {
+            // Open data stream and parse the data
+            try
+            {
+
+            }
+            finally
+            {
+                try
+                {
+                    // Close the response stream before the data is returned
+                    response.Close();
+                }
+                catch
+                {
+                }
+            }
+            
+        }
+
         #endregion
 
 
