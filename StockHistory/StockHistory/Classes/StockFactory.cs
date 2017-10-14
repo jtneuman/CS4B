@@ -93,7 +93,47 @@ namespace StockHistory.Classes
                 }
             }
             
-        }
+        }// End Parse Prices method
+
+        /// <summary>
+        /// Tries to download stock data asynchronously from Yahoo or Nasdaq.
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="site"></param>
+        /// <param name="dataSource"></param>
+        /// <param name="symbol"></param>
+        /// <param name="separators"></param>
+        /// <param name="dataIndex"></param>
+        /// <param name="yearsOfHistory"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+
+        private static Task<Stock> GetStockAsync(string url, string site, string dataSource,
+            string symbol, char[] separators, int dataIndex, int yearsOfHistory, 
+            out HttpWebRequest request)
+        {
+            request = (HttpWebRequest)HttpWebRequest.Create(url);
+
+            var webTask = Task.Factory.FromAsync<WebResponse>(
+                request.BeginGetResponse,
+                request.EndGetResponse,
+                null);
+
+            var resultTask = webTask.ContinueWith<Stock>(antecedent =>
+            {
+                if (!antecedent.Status.Equals(TaskStatus.Faulted))
+                {
+                    var response = (HttpWebResponse)antecedent.Result;
+
+                    List<decimal> prices = ParsePrices(response, separators, dataIndex);
+
+                    return new Stock(symbol, site, dataSource, prices);
+                }
+                return new Stock(symbol, site, dataSource, new List<decimal>());
+            });
+
+            return resultTask;
+        }// End GetStockAsync
 
         #endregion
 
