@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -38,6 +40,13 @@ namespace StockHistory.Classes
         #endregion
 
         #region Methods
+        /// <summary>
+        /// ParsePrices from the Response stream containing the stock data
+        /// </summary>
+        /// <param name="response"></param>
+        /// <param name="separators"></param>
+        /// <param name="dataIndex"></param>
+        /// <returns></returns>
         // Note example code used "Response" as paramenter name?
         private static List<decimal> ParsePrices(WebResponse response,
             char[] separators, int dataIndex)
@@ -45,7 +54,32 @@ namespace StockHistory.Classes
             // Open data stream and parse the data
             try
             {
+                List<decimal> prices = new List<decimal>();
 
+                using (Stream WebStream = response.GetResponseStream())
+                {
+                    using (StreamReader Reader = new StreamReader(WebStream))
+                    {
+                        // Read the data stream
+                        while (!Reader.EndOfStream)
+                        {
+                            string record = Reader.ReadLine();
+                            string[] tokens = record.Split(separators);
+                            DateTime date;
+                            decimal data;
+
+                            // Add prices that have valid dates
+                            // Use the culture to ensure that the decimal parse works in cultures where a comma is used as a separator.
+
+                            if (DateTime.TryParse(tokens[0], out date))
+                                if (Decimal.TryParse(tokens[dataIndex],
+                                    NumberStyles.AllowDecimalPoint,
+                                    new CultureInfo("en-US"), out data))
+                                    prices.Add(data);
+                        }
+                    }
+                }
+                return prices;
             }
             finally
             {
