@@ -134,6 +134,78 @@ namespace StockHistory.Classes
 
             return resultTask;
         }// End GetStockAsync
+        /// <summary>
+        /// Tries to fetch historical stock data from Yahoo or Nasdaq
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="yearsOfHistory"></param>
+        /// <returns></returns>
+        private static Stock GetStockData(string symbol, int yearsOfHistory)
+        {
+            if (!IsInternetAvailable)
+                throw new ApplicationException("No internet available.");
+
+            HttpWebRequest req_yahoo, req_nasdaq;
+
+            DateTime today = DateTime.Now;
+            string urlYahoo = string.Format(urlTemplateYahoo, symbol, today.Month - 1,
+                today.Day - 1, today.Year, today.Year - yearsOfHistory);
+            
+            string urlNasdaq = string.Format(urlTemplateNasdaq, symbol);
+
+            Task<Stock> yahoo = GetStockAsync(
+                urlYahoo, "Http://finance.yahoocom",
+                string.Format("Daily Adj Close, {0} years",
+                yearsOfHistory), symbol, new char[] { ',' },
+                6, yearsOfHistory, out req_yahoo);
+
+            Task<Stock> nasdaq = GetStockAsync(urlNasdaq, "http://nasdaq.com",
+                string.Format("Daily Close, {0} years", yearsOfHistory),
+                symbol, new char[] { '\t' }, 4, yearsOfHistory, out req_nasdaq);
+
+            var tasks = new List<Task<Stock>>();
+            var requests = new List<HttpWebRequest>();
+
+            tasks.Add(yahoo);
+            tasks.Add(nasdaq);
+
+            requests.Add(req_yahoo);
+            requests.Add(req_nasdaq);
+
+            Stock result = null;
+
+            // Use the result from the first Task that returns without exception
+            while (tasks.Count > 0)
+            {
+                int taskIndex = -1;
+
+                // The index of the completed task in the tasks array,
+                // or if taskIndex < 0 then a timeout occured
+                taskIndex = Task.WaitAny(tasks.ToArray(), 15000);
+
+                if (taskIndex < 0) break; // timeout occured
+
+                // Get the result from the task if it was successful
+                if (tasks[taskIndex].Exception == null && tasks[taskIndex].Result.HasPrices)
+                    result = tasks[taskIndex].Result;
+
+                // Remove the Task from the tasks collection 
+                // and the request from the requests collection
+                tasks.RemoveAt(taskIndex);
+                requests.RemoveAt(taskIndex);
+            }
+
+            // Cancel any remaining requests
+            foreach (HttpWebRequest r in requests)
+                r.Abort();
+
+            // Return the result if it contains data
+            if (result != null)
+                return result;
+            else
+                // Throw exception if none of the websites could produce data
+                throw new ApplicationException("Could not fetch data from any of the web sites.");
+        }
 
         #endregion
 
