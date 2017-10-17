@@ -29,14 +29,33 @@ namespace StockHistory
         private List<Stock> GetData(List<string> symbols,
             int yearsOfHistory = 1)
         {
-            Thread.Sleep(2000);
-            return null;
+            //Thread.Sleep(2000);
+            //return null;
+
+            var stocks = new List<Stock>();
+            var tasks = new List<Task>();
+
+            foreach (var symbol in symbols)
+            {
+                Task task = Task.Factory.StartNew((t_symbol) =>
+                {
+                    var stock = StockFactory.GetStockData(t_symbol.ToString(),
+                        yearsOfHistory);
+                    stocks.Add(stock);
+                }, symbol);
+
+                tasks.Add(task);
+            }
+
+            // Wait for all tasks to complete
+            Task.WaitAll(tasks.ToArray());
+            return stocks;
         }
 
         private string FormatOutput(List<Stock> stocks)
         {
-            Thread.Sleep(2000);
-            return null;
+            //Thread.Sleep(2000);
+            //return null;
         }
 
         #endregion

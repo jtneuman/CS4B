@@ -140,7 +140,7 @@ namespace StockHistory.Classes
         /// <param name="symbol"></param>
         /// <param name="yearsOfHistory"></param>
         /// <returns></returns>
-        private static Stock GetStockData(string symbol, int yearsOfHistory)
+        public static Stock GetStockData(string symbol, int yearsOfHistory)
         {
             if (!IsInternetAvailable)
                 throw new ApplicationException("No internet available.");
@@ -205,7 +205,8 @@ namespace StockHistory.Classes
             else
                 // Throw exception if none of the websites could produce data
                 throw new ApplicationException("Could not fetch data from any of the web sites.");
-        }
+
+        }// end GetStockData method.
 
         #endregion
 
