@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockHistory.Classes;
 using System.Threading;
+using System.Globalization;
 
 namespace StockHistory
 {
@@ -56,6 +57,20 @@ namespace StockHistory
         {
             //Thread.Sleep(2000);
             //return null;
+            var output = new StringBuilder();
+            var culture = new CultureInfo("en-US");
+
+            foreach (var stock in stocks)
+            {
+                output.Append(string.Format("** {0} **", stock.Symbol));
+                output.Append(string.Format("\n   Site:  '{0}'", stock.Site));
+                output.Append(string.Format("\n   Data source:\t'{0}'", stock.DataSource));
+                output.Append(string.Format(culture, "\n   Data points:\t{0:#,##0}", stock.DataPoints));
+                output.Append(string.Format(culture, "\n   Min price:\t\t{0:C}", stock.Min));
+                output.Append(string.Format(culture, "\n   Max price:\t{0:C}", stock.Max));
+                output.Append(string.Format(culture, "\n   Avg price:\t\t{0:C}\n\n", stock.Avg));
+            }
+            return output.ToString();
         }
 
         #endregion
